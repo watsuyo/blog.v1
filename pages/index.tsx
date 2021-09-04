@@ -17,9 +17,6 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 const Container = styled.div`
-  background: yellow;
-  width: 100vw;
-  max-width: 60rem;
   align-items: center;
 `
 

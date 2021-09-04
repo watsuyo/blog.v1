@@ -19,7 +19,7 @@ spoiler: "test blog"
 export default function Post({ source }:{ source: MDXRemoteSerializeResult }) {
   return (
     <>
-        <MDXRemote {...source} />
+      <MDXRemote {...source} />
     </>
   )
 }
