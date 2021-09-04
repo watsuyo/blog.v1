@@ -1,15 +1,12 @@
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
+import styled from "@emotion/styled"
+import { Theme } from 'theme-ui'
 
-export default function Home() {
+export default function Home(theme: Theme) {
   return (
-    <div>
-      <Head>
-        <title>NextJS BLOG</title>
-        <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/google/298/beaming-face-with-smiling-eyes_1f601.png" />
-      </Head>
-      <main>Welcome</main>
-    </div>
+    <Container>
+      <H2 theme={theme}>Home</H2>
+    </Container>
   )
 }
 
@@ -18,3 +15,15 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {}
   }
 }
+
+const Container = styled.div`
+  background: yellow;
+  width: 100vw;
+  max-width: 60rem;
+  align-items: center;
+`
+
+const H2 = styled.h2<{ theme: Theme }>`
+  text-align: center;
+  text-decoration: underline ${({theme}) => theme.colors?.primary};
+`
