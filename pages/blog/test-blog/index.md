@@ -1,8 +1,12 @@
 ---
 title: 'test-blog'
 date: '2021-09-04'
-spoiler: "test blog"
+excerpt: 'マークダウンが使えるかのテスト記事です'
+author:
+  name: watsuyo
 ---
+
+マークダウンが使えるかのテスト記事です
 
 1. いち
 2. に
