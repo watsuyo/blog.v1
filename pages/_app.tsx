@@ -41,7 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 
 const MoblieMain = styled.main`
-  margin: 0 20px;
+  margin: 0 1rem;
 `
 
 const Main = styled.main`

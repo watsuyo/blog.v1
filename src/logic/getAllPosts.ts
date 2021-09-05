@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 
 const blogDirPath = path.join('pages', 'blog')
 
-export const getPosts = () => {
+export const getAllPosts = () => {
   const posts = fs
     .readdirSync(blogDirPath, { withFileTypes: true })
     .filter((dirEnt) => dirEnt.isDirectory())

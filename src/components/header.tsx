@@ -11,7 +11,7 @@ export function Header() {
   const [mode] = useColorMode()
 
   return (
-    <Container>
+    <HeaderContainer>
       <h3>
         <StyledLink href="/">{BLOG_TITLE}</StyledLink>
       </h3>
@@ -22,11 +22,11 @@ export function Header() {
           <IoMdMoon size={28} onClick={toggleColorMode} />
         )}
       </IconButton>
-    </Container>
+    </HeaderContainer>
   )
 }
 
-const Container = styled.div`
+const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   align-self: stretch;

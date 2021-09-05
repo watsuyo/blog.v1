@@ -1,27 +1,88 @@
-import { getPosts } from './getAllPosts'
+import { getAllPosts } from '../src/logic/getAllPosts'
 import { StyledLink } from '@/components/styled/StyledLink'
-import { StyledCard } from '@/components/styled/StyledCard'
+import { PostContainer } from '@/components/styled/PostContainer'
+import { Text } from '@theme-ui/components'
+import styled from '@emotion/styled'
 
 type Post = { data: { title: string; excerpt: string; date: string } }
 
 const BlogIndex = ({ posts }: { posts: Post[] }) => (
-  <div>
+  <>
+    <H1Container>
+      <Text
+        sx={{
+          fontSize: 5,
+          fontWeight: 'bold'
+        }}
+      >
+        All Posts
+      </Text>
+    </H1Container>
+
     {posts.map((p, key: number) => (
-      <StyledLink href={`/blog/${p.data.title}`} key={key}>
-        <StyledCard sx={{ opacity: 1, mt: 2, p: 2 }}>
-          <span>{p.data.title}</span>
-          <span>{p.data.date}</span>
-          <div>{p.data.excerpt}</div>
-        </StyledCard>
-      </StyledLink>
+      <PostContainer key={key}>
+        <StyledLink href={`/blog/${p.data.title}`}>
+          <PostTopAreaContainer>
+            <TitleContainer>
+              <Text
+                sx={{
+                  fontSize: 4
+                }}
+              >
+                {p.data.title}
+              </Text>
+            </TitleContainer>
+
+            <DateContainer>
+              <DateText
+                sx={{
+                  fontSize: 2
+                }}
+              >
+                {p.data.date}
+              </DateText>
+            </DateContainer>
+          </PostTopAreaContainer>
+          <Text
+            sx={{
+              color: 'gray',
+              fontSize: 3
+            }}
+          >
+            {p.data.excerpt}
+          </Text>
+        </StyledLink>
+      </PostContainer>
     ))}
-  </div>
+  </>
 )
+
+const TitleContainer = styled.div`
+  min-width: 200px;
+`
+
+const DateContainer = styled.div`
+  margin: auto 0;
+`
+
+const DateText = styled(Text)`
+  white-space: nowrap;
+`
+
+const PostTopAreaContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+`
+
+const H1Container = styled.h1`
+  margin: 0 0 16px 0;
+`
 
 export const getServerSideProps = () => {
   return {
     props: {
-      posts: getPosts()
+      posts: getAllPosts().reverse()
     }
   }
 }
