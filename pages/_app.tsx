@@ -8,7 +8,7 @@ import { theme } from '@/logic/style'
 import { isMobile } from 'react-device-detect'
 import { useEffect, useState } from 'react'
 
-export const App = ({ Component, pageProps }: AppProps) => {
+export default function App({ Component, pageProps }: AppProps) {
   const [mobile, setMobile] = useState<boolean>()
 
   useEffect(() => setMobile(isMobile), [setMobile])

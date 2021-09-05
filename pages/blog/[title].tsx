@@ -22,7 +22,8 @@ const getPostAll = () => {
         .map((fileName) => fs.readFileSync(path.join(dirPath, fileName)))
     })
     .map((f) => {
-      const { ...post } = matter(f)
+      const { orig, ...post } = matter(f)
+      console.info(orig)
       return post
     })
 }
@@ -46,8 +47,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const StyledCard = styled(Card)`
   border: 4px solid;
-  borderradius: 4;
-  boxshadow: 0 0 8px rgba(0, 0, 0, 0.125);
+  border-radius: 4;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.125);
 `
 
 export default function Post({ source }: { source: MDXRemoteSerializeResult }) {

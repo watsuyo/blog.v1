@@ -4,6 +4,7 @@ import { BLOG_TITLE } from '@/global'
 import { ColorMode, useToggleColorMode } from '@/logic/style'
 import { useColorMode } from '@theme-ui/color-modes'
 import { StyledLink } from './styled/StyledLink'
+import { IconButton } from '@theme-ui/components'
 
 export function Header() {
   const toggleColorMode = useToggleColorMode()
@@ -14,11 +15,13 @@ export function Header() {
       <h3>
         <StyledLink href="/">{BLOG_TITLE}</StyledLink>
       </h3>
-      {mode === ColorMode.Dark ? (
-        <IoMdSunny size={28} onClick={toggleColorMode} />
-      ) : (
-        <IoMdMoon size={28} onClick={toggleColorMode} />
-      )}
+      <IconButton>
+        {mode === ColorMode.Dark ? (
+          <IoMdSunny size={28} onClick={toggleColorMode} />
+        ) : (
+          <IoMdMoon size={28} onClick={toggleColorMode} />
+        )}
+      </IconButton>
     </Container>
   )
 }

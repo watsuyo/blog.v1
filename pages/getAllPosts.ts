@@ -15,7 +15,8 @@ export const getPosts = () => {
         .map((fileName) => fs.readFileSync(path.join(dirPath, fileName)))
     })
     .map((f) => {
-      const { ...post } = matter(f)
+      const { orig, ...post } = matter(f)
+      console.info(orig)
       return post
     })
   return posts
