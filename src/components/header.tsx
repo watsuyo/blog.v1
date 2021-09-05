@@ -1,50 +1,32 @@
-import styled from "@emotion/styled"
-import { Link } from 'theme-ui'
-import { IoMdSunny,IoMdMoon } from "react-icons/io"
-import { BLOG_TITLE } from "@/global"
-import { ColorMode, useToggleColorMode } from "@/logic/style"
-import { useColorMode } from "@theme-ui/color-modes"
+import styled from '@emotion/styled'
+import { IoMdSunny, IoMdMoon } from 'react-icons/io'
+import { BLOG_TITLE } from '@/global'
+import { ColorMode, useToggleColorMode } from '@/logic/style'
+import { useColorMode } from '@theme-ui/color-modes'
+import { StyledLink } from './styled/StyledLink'
 
 export function Header() {
-	const toggleColorMode = useToggleColorMode()
-	const [mode] = useColorMode()
+  const toggleColorMode = useToggleColorMode()
+  const [mode] = useColorMode()
 
-	return (
-		<Container>
-			<h3>
-				<StyledLink href="/">
-					{BLOG_TITLE}
-				</StyledLink>
-			</h3>
-			{
-				mode === ColorMode.Dark ?
-					<IoMdSunny size={28} onClick={toggleColorMode} /> :
-					<IoMdMoon size={28} onClick={toggleColorMode} />
-			}
-		</Container>
-	)
+  return (
+    <Container>
+      <h3>
+        <StyledLink href="/">{BLOG_TITLE}</StyledLink>
+      </h3>
+      {mode === ColorMode.Dark ? (
+        <IoMdSunny size={28} onClick={toggleColorMode} />
+      ) : (
+        <IoMdMoon size={28} onClick={toggleColorMode} />
+      )}
+    </Container>
+  )
 }
 
 const Container = styled.div`
-	display: flex;
-	align-items: center;
-	align-self: stretch;
-	justify-content: space-between;
-	padding: 0 1rem;
-`
-
-const StyledLink = styled(Link)`
-	text-decoration: none;
-	color: inherit;
-`
-
-const DarkSwitcher = styled.div`
-	display: flex;
-	align-items: center;
-	align-self: stretch;
-`
-
-const StyledIoMdSunny = styled.div`
-	margin-right: 8px;
-	padding-top: 8px;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  justify-content: space-between;
+  padding: 0 1rem;
 `

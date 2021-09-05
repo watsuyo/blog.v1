@@ -1,7 +1,7 @@
 ---
-title: 'test-blog'
-date: '2021-09-04'
-excerpt: 'マークダウンが使えるかのテスト記事です'
+title: 'test2'
+date: '2021-09-05'
+excerpt: '2回目の記事です'
 author:
   name: watsuyo
 ---

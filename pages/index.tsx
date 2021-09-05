@@ -1,26 +1,29 @@
-import { GetStaticProps } from 'next'
-import styled from "@emotion/styled"
-import { Theme } from 'theme-ui'
+import { getPosts } from './getAllPosts'
+import { StyledLink } from '@/components/styled/StyledLink'
+import { StyledCard } from '@/components/styled/StyledCard'
 
-export default function Home(theme: Theme) {
-  return (
-    <Container>
-      <H2 theme={theme}>Home</H2>
-    </Container>
-  )
-}
+type Post = { data: { title: string; excerpt: string; date: string } }
 
-export const getStaticProps: GetStaticProps = async () => {
+const BlogIndex = ({ posts }: { posts: Post[] }) => (
+  <div>
+    {posts.map((p, key: number) => (
+      <StyledLink href={`/blog/${p.data.title}`} key={key}>
+        <StyledCard sx={{ opacity: 1, mt: 2, p: 2 }}>
+          <span>{p.data.title}</span>
+          <span>{p.data.date}</span>
+          <div>{p.data.excerpt}</div>
+        </StyledCard>
+      </StyledLink>
+    ))}
+  </div>
+)
+
+export const getServerSideProps = () => {
   return {
-    props: {}
+    props: {
+      posts: getPosts()
+    }
   }
 }
 
-const Container = styled.div`
-  align-items: center;
-`
-
-const H2 = styled.h2<{ theme: Theme }>`
-  text-align: center;
-  text-decoration: underline ${({theme}) => theme.colors?.primary};
-`
+export default BlogIndex
