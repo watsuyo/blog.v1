@@ -25,7 +25,7 @@ export const theme = merge(base, {
 	}
 })
 
-enum ColorMode {
+export enum ColorMode {
 	Default = "default",
 	Dark = "dark"
 }
