@@ -2,7 +2,7 @@ import * as path from 'path'
 import * as fs from 'fs'
 import matter from 'gray-matter'
 
-const blogDirPath = path.join('pages', 'blog')
+export const blogDirPath = path.join('src', 'pages', 'blog')
 
 export const getAllPosts = () => {
   const posts = fs

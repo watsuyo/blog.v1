@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { IoMdSunny, IoMdMoon } from 'react-icons/io'
-import { BLOG_TITLE } from '@/global'
-import { ColorMode, useToggleColorMode } from '@/logic/style'
+import { SITE_NAME } from 'global'
+import { ColorMode, useToggleColorMode } from 'logic/style'
 import { useColorMode } from '@theme-ui/color-modes'
 import { StyledLink } from './styled/StyledLink'
 import { IconButton } from '@theme-ui/components'
@@ -13,9 +13,9 @@ export function Header() {
   return (
     <HeaderContainer>
       <h3>
-        <StyledLink href="/">{BLOG_TITLE}</StyledLink>
+        <StyledLink href="/">{SITE_NAME}</StyledLink>
       </h3>
-      <IconButton>
+      <IconButton aria-label="toggle color mode">
         {mode === ColorMode.Dark ? (
           <IoMdSunny size={28} onClick={toggleColorMode} />
         ) : (

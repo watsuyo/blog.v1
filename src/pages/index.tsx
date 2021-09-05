@@ -1,12 +1,12 @@
-import { getAllPosts } from '../src/logic/getAllPosts'
-import { StyledLink } from '@/components/styled/StyledLink'
-import { PostContainer } from '@/components/styled/PostContainer'
+import { getAllPosts } from 'logic/getAllPosts'
+import { StyledLink } from 'components/styled/StyledLink'
+import { PostContainer } from 'components/styled/PostContainer'
 import { Text } from '@theme-ui/components'
 import styled from '@emotion/styled'
 
-type Post = { data: { title: string; excerpt: string; date: string } }
+type Post = { data: { title: string; description: string; date: string } }
 
-const BlogIndex = ({ posts }: { posts: Post[] }) => (
+const Index = ({ posts }: { posts: Post[] }) => (
   <>
     <H1Container>
       <Text
@@ -45,11 +45,11 @@ const BlogIndex = ({ posts }: { posts: Post[] }) => (
           </PostTopAreaContainer>
           <Text
             sx={{
-              color: 'gray',
+              color: '#767676',
               fontSize: 3
             }}
           >
-            {p.data.excerpt}
+            {p.data.description}
           </Text>
         </StyledLink>
       </PostContainer>
@@ -79,12 +79,14 @@ const H1Container = styled.h1`
   margin: 0 0 16px 0;
 `
 
-export const getServerSideProps = () => {
+export const getStaticProps = () => {
+  const posts = getAllPosts()
+
   return {
     props: {
-      posts: getAllPosts().reverse()
+      posts
     }
   }
 }
 
-export default BlogIndex
+export default Index
