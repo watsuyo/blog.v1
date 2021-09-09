@@ -1,10 +1,11 @@
 import styled from '@emotion/styled'
-import { IoMdSunny, IoMdMoon } from 'react-icons/io'
+import { IoMdSunny, IoMdMoon, IoLogoGithub } from 'react-icons/io'
 import { SITE_NAME } from 'global'
 import { ColorMode, useToggleColorMode } from 'logic/style'
 import { useColorMode } from '@theme-ui/color-modes'
 import { StyledLink } from './styled/StyledLink'
 import { IconButton } from '@theme-ui/components'
+import { StyledAnkerLink } from './styled/StyledAnkerLink'
 
 export function Header() {
   const toggleColorMode = useToggleColorMode()
@@ -15,13 +16,18 @@ export function Header() {
       <h3>
         <StyledLink href="/">{SITE_NAME}</StyledLink>
       </h3>
-      <IconButton aria-label="toggle color mode">
-        {mode === ColorMode.Dark ? (
-          <IoMdSunny size={28} onClick={toggleColorMode} />
-        ) : (
-          <IoMdMoon size={28} onClick={toggleColorMode} />
-        )}
-      </IconButton>
+      <IconContainer>
+        <StyledAnkerLink target="_blank" href="https://github.com/watsuyo" rel="noreferrer">
+          <IoLogoGithub size={32} />
+        </StyledAnkerLink>
+        <IconButton aria-label="toggle color mode">
+          {mode === ColorMode.Dark ? (
+            <IoMdSunny size={32} onClick={toggleColorMode} />
+          ) : (
+            <IoMdMoon size={32} onClick={toggleColorMode} />
+          )}
+        </IconButton>
+      </IconContainer>
     </HeaderContainer>
   )
 }
@@ -32,4 +38,8 @@ const HeaderContainer = styled.div`
   align-self: stretch;
   justify-content: space-between;
   padding: 0 1rem;
+`
+
+const IconContainer = styled.div`
+  display: flex;
 `
