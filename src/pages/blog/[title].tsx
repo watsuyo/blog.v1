@@ -4,6 +4,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { blogDirPath, getAllPosts } from 'logic/getAllPosts'
 import Head from 'Head'
 import { SITE_NAME, PAGE_DESCRIPTION, PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'global'
+import { StyledAnkerLink } from 'components/styled/StyledAnkerLink'
 
 type Params = { title: string; description: string }
 
@@ -43,6 +44,27 @@ export default function Post({
         url={`${DOMAIN}${dirPath}`}
       />
       <MDXRemote {...source} />
+      <StyledAnkerLink
+        target="_blank"
+        href={`${
+          params?.title
+            ? `https://twitter.com/search?q=watsuyo.dev/blog/${params?.title}&src=typed_query`
+            : 'https://twitter.com/search?q=watsuyo.dev'
+        }`}
+      >
+        Discuss on Twitter
+      </StyledAnkerLink>{' '}
+      •{' '}
+      <StyledAnkerLink
+        target="_blank"
+        href={`${
+          params?.title
+            ? `https://github.com/watsuyo/blog/edit/main/src/pages/blog/${params?.title}/index.md`
+            : 'https://github.com/watsuyo/blog/fork'
+        }`}
+      >
+        Edit on GitHub
+      </StyledAnkerLink>
     </>
   )
 }
