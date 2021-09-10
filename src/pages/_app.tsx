@@ -2,10 +2,10 @@ import styled from '@emotion/styled'
 import { ThemeProvider } from '@theme-ui/theme-provider'
 import { AppProps } from 'next/app'
 import { theme } from 'logic/style'
-import { Header } from 'components/Header'
 import Head from 'Head'
 import { SITE_NAME, PAGE_DESCRIPTION, PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'global'
 import { Footer } from 'components/Footer'
+import { Header } from 'components/Header'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
