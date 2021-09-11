@@ -82,7 +82,6 @@ const H1Container = styled.h1`
 
 export const getStaticProps = () => {
   const posts = getAllPosts()
-
   return {
     props: {
       posts
