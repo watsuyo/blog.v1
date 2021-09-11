@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { IoMdSunny, IoMdMoon } from 'react-icons/io'
+import { IoMdSunny, IoMdMoon, IoLogoRss } from 'react-icons/io'
 import { SITE_NAME } from 'global'
 import { ColorMode, useToggleColorMode } from 'logic/style'
 import { useColorMode } from '@theme-ui/color-modes'
@@ -15,13 +15,20 @@ export function Header() {
       <h3>
         <StyledLink href="/">{SITE_NAME}</StyledLink>
       </h3>
-      <IconButton aria-label="toggle color mode">
-        {mode === ColorMode.Dark ? (
-          <IoMdSunny size={28} onClick={toggleColorMode} />
-        ) : (
-          <IoMdMoon size={28} onClick={toggleColorMode} />
-        )}
-      </IconButton>
+      <div>
+        <IoLogoRssContainer>
+          <StyledLink aria-label="RSS Link" href="/rss/feed.xml">
+            <IoLogoRss size={28} />
+          </StyledLink>
+        </IoLogoRssContainer>
+        <IconButton aria-label="toggle color mode">
+          {mode === ColorMode.Dark ? (
+            <IoMdSunny size={28} onClick={toggleColorMode} />
+          ) : (
+            <IoMdMoon size={28} onClick={toggleColorMode} />
+          )}
+        </IconButton>
+      </div>
     </HeaderContainer>
   )
 }
@@ -32,4 +39,8 @@ const HeaderContainer = styled.div`
   align-self: stretch;
   justify-content: space-between;
   padding: 0 1rem;
+`
+
+const IoLogoRssContainer = styled.span`
+  padding-right: 0.4rem;
 `

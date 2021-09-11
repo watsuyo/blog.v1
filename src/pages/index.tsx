@@ -4,6 +4,7 @@ import { PostContainer } from 'components/styled/PostContainer'
 import { Text } from '@theme-ui/components'
 import styled from '@emotion/styled'
 import { PostData } from 'type'
+import generateRssFeed from 'rss'
 
 type Post = { data: PostData }
 
@@ -81,6 +82,7 @@ const H1Container = styled.h1`
 `
 
 export const getStaticProps = () => {
+  generateRssFeed()
   const posts = getAllPosts()
   return {
     props: {

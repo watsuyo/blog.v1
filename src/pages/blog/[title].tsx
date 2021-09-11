@@ -8,15 +8,17 @@ import { StyledAnchorLink } from 'components/styled/StyledAnchorLink'
 import { SiHatenabookmark, SiTwitter } from 'react-icons/si'
 import styled from '@emotion/styled'
 import { PostData } from 'type'
+import generateRssFeed from 'rss'
 
 export const getStaticPaths: GetStaticPaths = () => {
+  generateRssFeed()
   return {
     paths: getAllPosts().map((m) => {
       return {
         params: {
-          title: m.data.path as PostData['title'],
-          path: m.data.path as PostData['path'],
-          description: m.data.path as PostData['description']
+          title: m.data.path,
+          path: m.data.path,
+          description: m.data.path
         }
       }
     }),

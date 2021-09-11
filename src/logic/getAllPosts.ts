@@ -1,8 +1,17 @@
 import * as path from 'path'
 import * as fs from 'fs'
 import matter from 'gray-matter'
+import { PostData } from 'type'
 
 export const blogDirPath = path.join('src', 'pages', 'blog')
+export type Post = {
+  data: PostData
+  content: string
+  excerpt?: string | undefined
+  language: string
+  matter: string
+  stringify(lang: string): string
+}
 
 export const getAllPosts = () => {
   const posts = fs
@@ -18,6 +27,8 @@ export const getAllPosts = () => {
       const { orig, ...post } = matter(f)
       console.info(orig)
       return post
-    })
+    }) as Post[]
+
+
   return posts
 }
