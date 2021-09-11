@@ -5,14 +5,15 @@ import { blogDirPath, getAllPosts } from 'logic/getAllPosts'
 import Head from 'Head'
 import { SITE_NAME, PAGE_DESCRIPTION, PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'global'
 import { StyledAnkerLink } from 'components/styled/StyledAnkerLink'
-
-type Params = { title: string; description: string }
+import { SiHatenabookmark, SiTwitter } from 'react-icons/si'
+import styled from '@emotion/styled'
+import { PostData } from 'type'
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {
     paths: getAllPosts().map((m) => ({
       params: {
-        title: m.data.title as Params['title']
+        title: m.data.path as PostData['path']
       }
     })),
     fallback: false
@@ -20,7 +21,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const source = getAllPosts().find((m) => m.data.title === params?.title)
+  const source = getAllPosts().find((m) => m.data.path === params?.title)
   const mdxSource = await serialize(source ? source.content : '')
   return { props: { source: mdxSource, params, dirPath: blogDirPath } }
 }
@@ -31,7 +32,7 @@ export default function Post({
   dirPath
 }: {
   source: MDXRemoteSerializeResult
-  params?: Params
+  params?: PostData
   dirPath: string
 }) {
   return (
@@ -44,27 +45,52 @@ export default function Post({
         url={`${DOMAIN}${dirPath}`}
       />
       <MDXRemote {...source} />
-      <StyledAnkerLink
-        target="_blank"
-        href={`${
-          params?.title
-            ? `https://twitter.com/search?q=watsuyo.dev/blog/${params?.title}&src=typed_query`
-            : 'https://twitter.com/search?q=watsuyo.dev'
-        }`}
-      >
-        Discuss on Twitter
-      </StyledAnkerLink>{' '}
-      •{' '}
-      <StyledAnkerLink
-        target="_blank"
-        href={`${
-          params?.title
-            ? `https://github.com/watsuyo/blog/edit/main/src/pages/blog/${params?.title}/index.md`
-            : 'https://github.com/watsuyo/blog/fork'
-        }`}
-      >
-        Edit on GitHub
-      </StyledAnkerLink>
+      {params?.title && (
+        <>
+          <StyledAnkerLink
+            target="_blank"
+            href={`https://twitter.com/search?q=watsuyo.dev/blog/${params?.title}&src=typed_query`}
+          >
+            Discuss on Twitter
+          </StyledAnkerLink>{' '}
+          •{' '}
+          <StyledAnkerLink
+            target="_blank"
+            href={`https://github.com/watsuyo/blog/edit/main/src/pages/blog/${params?.title}/index.md`}
+          >
+            Edit on GitHub
+          </StyledAnkerLink>{' '}
+          <ShareWithIconContainer>
+            <span>Share With </span>
+            <StyledAnkerLink
+              href={`https://b.hatena.ne.jp/entry/s/watsuyo.dev/blog/${params?.title}`}
+              target="_blank"
+            >
+              <IconWrapper>
+                <SiHatenabookmark size={28} />
+              </IconWrapper>
+            </StyledAnkerLink>{' '}
+            <StyledAnkerLink
+              href={`https://twitter.com/intent/tweet?text=${params?.title}%20%7C%20&url=https://watsuyo.dev/blog/${params?.title}`}
+              target="_blank"
+            >
+              {' '}
+              <IconWrapper>
+                <SiTwitter size={28} />
+              </IconWrapper>
+            </StyledAnkerLink>
+          </ShareWithIconContainer>
+        </>
+      )}
     </>
   )
 }
+
+const IconWrapper = styled.div`
+  margin-left: 0.5rem;
+`
+
+const ShareWithIconContainer = styled.div`
+  display: flex;
+  margin-top: 2rem;
+`

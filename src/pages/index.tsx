@@ -3,8 +3,9 @@ import { StyledLink } from 'components/styled/StyledLink'
 import { PostContainer } from 'components/styled/PostContainer'
 import { Text } from '@theme-ui/components'
 import styled from '@emotion/styled'
+import { PostData } from 'type'
 
-type Post = { data: { title: string; description: string; date: string } }
+type Post = { data: PostData }
 
 const Index = ({ posts }: { posts: Post[] }) => (
   <>
@@ -21,7 +22,7 @@ const Index = ({ posts }: { posts: Post[] }) => (
 
     {posts.map((p, key: number) => (
       <PostContainer key={key}>
-        <StyledLink href={`/blog/${p.data.title}`}>
+        <StyledLink href={`/blog/${p.data.path}`}>
           <PostTopAreaContainer>
             <TitleContainer>
               <Text
