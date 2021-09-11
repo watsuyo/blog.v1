@@ -12,7 +12,7 @@ function generateRssFeed() {
 	const date = new Date()
 	const author = {
 		name: 'watsuyo',
-		email: 'example@mail.com',
+		email: 'dmwtpdmwtp24@gmail.com',
 		link: 'https://twitter.com/watsuyo_2'
 	}
 
@@ -24,7 +24,7 @@ function generateRssFeed() {
 		language: 'ja',
 		image: ICON,
 		favicon: ICON,
-		copyright: `© 2021 watsuyo watsuyo`,
+		copyright: `© 2021 watsuyo`,
 		updated: date,
 		generator: 'Next.js using Feed for Node.js',
 		feedLinks: {

@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://watsuyo.dev</id>
     <title>watsuyo.dev</title>
-    <updated>2021-09-11T11:32:48.553Z</updated>
+    <updated>2021-09-11T12:26:05.624Z</updated>
     <generator>Next.js using Feed for Node.js</generator>
     <author>
         <name>watsuyo</name>
-        <email>example@mail.com</email>
+        <email>dmwtpdmwtp24@gmail.com</email>
         <uri>https://twitter.com/watsuyo_2</uri>
     </author>
     <link rel="alternate" href="https://watsuyo.dev"/>
@@ -14,7 +14,7 @@
     <subtitle>@watsuyoのブログサイトです. JavaScript,Vue.js,React.js,Nuxt.js,Next.js,UI/UX,デザイン、フロントエンドに関して投稿します. This is @watsuyo's blog.I post about JavaScript, Vue.js, React.js, Nuxt.js, Next.js, UI/UX,Design,Front-End.</subtitle>
     <logo>https://pbs.twimg.com/profile_images/1339430665792626689/8cE0aCDB_400x400.jpg</logo>
     <icon>https://pbs.twimg.com/profile_images/1339430665792626689/8cE0aCDB_400x400.jpg</icon>
-    <rights>© 2021 watsuyo watsuyo</rights>
+    <rights>© 2021 watsuyo</rights>
     <entry>
         <title type="html"><![CDATA[社会人学生エンジニアになった理由と学ぶこと]]></title>
         <id>https://watsuyo.dev/blog/student-engineer</id>
@@ -107,12 +107,12 @@
 ]]></content>
         <author>
             <name>watsuyo</name>
-            <email>example@mail.com</email>
+            <email>dmwtpdmwtp24@gmail.com</email>
             <uri>https://twitter.com/watsuyo_2</uri>
         </author>
         <contributor>
             <name>watsuyo</name>
-            <email>example@mail.com</email>
+            <email>dmwtpdmwtp24@gmail.com</email>
             <uri>https://twitter.com/watsuyo_2</uri>
         </contributor>
     </entry>

@@ -4,7 +4,7 @@
         <title>watsuyo.dev</title>
         <link>https://watsuyo.dev</link>
         <description>@watsuyoのブログサイトです. JavaScript,Vue.js,React.js,Nuxt.js,Next.js,UI/UX,デザイン、フロントエンドに関して投稿します. This is @watsuyo's blog.I post about JavaScript, Vue.js, React.js, Nuxt.js, Next.js, UI/UX,Design,Front-End.</description>
-        <lastBuildDate>Sat, 11 Sep 2021 11:32:48 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 11 Sep 2021 12:26:05 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Next.js using Feed for Node.js</generator>
         <language>ja</language>
@@ -13,7 +13,7 @@
             <url>https://pbs.twimg.com/profile_images/1339430665792626689/8cE0aCDB_400x400.jpg</url>
             <link>https://watsuyo.dev</link>
         </image>
-        <copyright>© 2021 watsuyo watsuyo</copyright>
+        <copyright>© 2021 watsuyo</copyright>
         <item>
             <title><![CDATA[社会人学生エンジニアになった理由と学ぶこと]]></title>
             <link>https://watsuyo.dev/blog/student-engineer</link>
@@ -104,7 +104,7 @@
 
 [じろさんのブログ](https://jirolog.hatenablog.com/entry/2021/01/31/020928)に、学費の安さ、教育訓練給付金に関する内容から、AIITに関する内容までまとまっているので参考になるかと思います。
 ]]></content:encoded>
-            <author>example@mail.com (watsuyo)</author>
+            <author>dmwtpdmwtp24@gmail.com (watsuyo)</author>
         </item>
     </channel>
 </rss>
