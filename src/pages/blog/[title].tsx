@@ -3,7 +3,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { blogDirPath, getAllPosts } from 'logic/getAllPosts'
 import Head from 'Head'
-import { PAGE_IMAGE, PAGE_KEYWORD, DOMAIN, SITE_NAME } from 'global'
+import { PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'global'
 import { StyledAnchorLink } from 'components/styled/StyledAnchorLink'
 import { SiHatenabookmark, SiTwitter } from 'react-icons/si'
 import styled from '@emotion/styled'
@@ -76,7 +76,7 @@ export default function Post({
               </IconWrapper>
             </StyledAnchorLink>{' '}
             <StyledAnchorLink
-              href={`https://twitter.com/intent/tweet?text=${source.data.title}%20%7C%20${SITE_NAME}&url=https://watsuyo.dev/blog/${source.data.path}`}
+              href={`https://twitter.com/intent/tweet?text=${source.data.title}%20%7C%20@${source.data.author}&url=https://watsuyo.dev/blog/${source.data.path}`}
               target="_blank"
             >
               {' '}

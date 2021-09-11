@@ -2,8 +2,7 @@
 title: '社会人学生エンジニアになった理由と学ぶこと'
 date: '2021-09-05'
 description: '社会人学生エンジニアになった理由 いわゆる情報系の勉強をして学位を取りたい 情報系以外にもデザインや事業系の科目も履修できる'
-author:
-  name: watsuyo
+author: watsuyo_2
 path: 'student-engineer'
 ---
 
