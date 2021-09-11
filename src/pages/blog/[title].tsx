@@ -4,7 +4,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { blogDirPath, getAllPosts } from 'logic/getAllPosts'
 import Head from 'Head'
 import { SITE_NAME, PAGE_DESCRIPTION, PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'global'
-import { StyledAnkerLink } from 'components/styled/StyledAnkerLink'
+import { StyledAnchorLink } from 'components/styled/StyledAnchorLink'
 import { SiHatenabookmark, SiTwitter } from 'react-icons/si'
 import styled from '@emotion/styled'
 import { PostData } from 'type'
@@ -47,30 +47,30 @@ export default function Post({
       <MDXRemote {...source} />
       {params?.title && (
         <>
-          <StyledAnkerLink
+          <StyledAnchorLink
             target="_blank"
             href={`https://twitter.com/search?q=watsuyo.dev/blog/${params?.title}&src=typed_query`}
           >
             Discuss on Twitter
-          </StyledAnkerLink>{' '}
+          </StyledAnchorLink>{' '}
           •{' '}
-          <StyledAnkerLink
+          <StyledAnchorLink
             target="_blank"
             href={`https://github.com/watsuyo/blog/edit/main/src/pages/blog/${params?.title}/index.md`}
           >
             Edit on GitHub
-          </StyledAnkerLink>{' '}
+          </StyledAnchorLink>{' '}
           <ShareWithIconContainer>
             <span>Share With </span>
-            <StyledAnkerLink
+            <StyledAnchorLink
               href={`https://b.hatena.ne.jp/entry/s/watsuyo.dev/blog/${params?.title}`}
               target="_blank"
             >
               <IconWrapper>
                 <SiHatenabookmark size={28} />
               </IconWrapper>
-            </StyledAnkerLink>{' '}
-            <StyledAnkerLink
+            </StyledAnchorLink>{' '}
+            <StyledAnchorLink
               href={`https://twitter.com/intent/tweet?text=${params?.title}%20%7C%20&url=https://watsuyo.dev/blog/${params?.title}`}
               target="_blank"
             >
@@ -78,7 +78,7 @@ export default function Post({
               <IconWrapper>
                 <SiTwitter size={28} />
               </IconWrapper>
-            </StyledAnkerLink>
+            </StyledAnchorLink>
           </ShareWithIconContainer>
         </>
       )}

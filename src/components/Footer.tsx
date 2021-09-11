@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Text } from '@theme-ui/components'
 import { IoLogoGithub, IoLogoTwitter } from 'react-icons/io'
-import { StyledAnkerLink } from './styled/StyledAnkerLink'
+import { StyledAnchorLink } from './styled/StyledAnchorLink'
 
 export function Footer() {
   return (
@@ -11,14 +11,14 @@ export function Footer() {
       </TextContainer>
       <LinksContainer>
         <LinkContainer>
-          <StyledAnkerLink target="_blank" href="https://github.com/watsuyo" rel="noreferrer">
+          <StyledAnchorLink target="_blank" href="https://github.com/watsuyo" rel="noreferrer">
             <IoLogoGithub size={28} />
-          </StyledAnkerLink>
+          </StyledAnchorLink>
         </LinkContainer>
         <LinkContainer>
-          <StyledAnkerLink target="_blank" href="https://twitter.com/watsuyo_2" rel="noreferrer">
+          <StyledAnchorLink target="_blank" href="https://twitter.com/watsuyo_2" rel="noreferrer">
             <IoLogoTwitter size={28} />
-          </StyledAnkerLink>
+          </StyledAnchorLink>
         </LinkContainer>
       </LinksContainer>
     </StyledFooter>
