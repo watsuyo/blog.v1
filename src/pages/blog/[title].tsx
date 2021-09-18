@@ -9,7 +9,6 @@ import { SiHatenabookmark, SiTwitter } from 'react-icons/si'
 import styled from '@emotion/styled'
 import { PostData } from 'type'
 import generateRssFeed from 'rss'
-import CodeBlock from 'components/codeblock'
 
 export const getStaticPaths: GetStaticPaths = () => {
   generateRssFeed()
@@ -33,10 +32,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return { props: { source, mdxSource, dirPath: blogDirPath } }
 }
 
-const components = {
-  code: CodeBlock
-}
-
 export default function Post({
   source,
   mdxSource,
@@ -56,7 +51,7 @@ export default function Post({
         image={PAGE_IMAGE(source.data.title)}
         url={`${DOMAIN}${dirPath}`}
       />
-      <MDXRemote {...mdxSource} components={components} />
+      <MDXRemote {...mdxSource} />
       {source.data.path && (
         <LinkContainer>
           <StyledAnchorLink

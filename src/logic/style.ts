@@ -2,6 +2,8 @@ import { useColorMode } from '@theme-ui/color-modes'
 import { base, dark } from '@theme-ui/presets'
 import { useCallback } from 'react'
 import { merge } from 'theme-ui'
+import codeTheme from '@theme-ui/prism/presets/shades-of-purple.json'
+
 
 export const theme = merge(base, {
   styles: {
@@ -14,7 +16,13 @@ export const theme = merge(base, {
         font: 'inherit',
         cursor: 'pointer',
         outline: 'inherit'
+      },
+      '.prism-code': {
+        padding: '24px'
       }
+    },
+    code: {
+      ...codeTheme
     }
   },
   colors: {
@@ -22,7 +30,8 @@ export const theme = merge(base, {
     modes: {
       dark: dark.colors
     }
-  }
+  },
+
 })
 
 export enum ColorMode {

@@ -1,27 +1,26 @@
-import Highlight, { defaultProps, Language } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/duotoneLight'
+import { ThemeProvider } from 'theme-ui'
+import Prism from '@theme-ui/prism'
 
-type Props = {
-  className: string
-  children: string
+import duotoneDark from '@theme-ui/prism/presets/duotone-dark.json'
+
+const components = {
+  pre: ({ children }: { children: string }) => <>{children}</>,
+  code: Prism
 }
 
-export default function CodeBlock({ className, children }: Props) {
-  const language = className?.replace(/language-/, '') as Language
-
+export default function CodeBlock({ children }: { children: string }) {
   return (
-    <Highlight {...defaultProps} theme={theme} code={children} language={language}>
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <code className={className} style={{ ...style, ...{ fontSize: '20px' } }}>
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
-        </code>
-      )}
-    </Highlight>
+    <ThemeProvider
+      theme={{
+        styles: {
+          code: {
+            ...duotoneDark
+          }
+        }
+      }}
+      components={components}
+    >
+      {children}
+    </ThemeProvider>
   )
 }

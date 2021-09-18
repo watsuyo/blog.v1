@@ -7,9 +7,16 @@ import { SITE_NAME, PAGE_DESCRIPTION, PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'g
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
 
+import Prism from '@theme-ui/prism'
+
+const components = {
+  pre: ({ children }: { children: string }) => <>{children}</>,
+  code: Prism
+}
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} components={components}>
       <BodyContainer>
         <Head
           title={SITE_NAME}
