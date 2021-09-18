@@ -9,6 +9,7 @@ import { SiHatenabookmark, SiTwitter } from 'react-icons/si'
 import styled from '@emotion/styled'
 import { PostData } from 'type'
 import generateRssFeed from 'rss'
+import CodeBlock from 'components/codeblock'
 
 export const getStaticPaths: GetStaticPaths = () => {
   generateRssFeed()
@@ -32,6 +33,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return { props: { source, mdxSource, dirPath: blogDirPath } }
 }
 
+const components = {
+  code: CodeBlock
+}
+
 export default function Post({
   source,
   mdxSource,
@@ -51,9 +56,9 @@ export default function Post({
         image={PAGE_IMAGE(source.data.title)}
         url={`${DOMAIN}${dirPath}`}
       />
-      <MDXRemote {...mdxSource} />
+      <MDXRemote {...mdxSource} components={components} />
       {source.data.path && (
-        <>
+        <LinkContainer>
           <StyledAnchorLink
             target="_blank"
             href={`https://twitter.com/search?q=watsuyo.dev/blog/${source.data.path}&src=typed_query`}
@@ -87,7 +92,7 @@ export default function Post({
               </IconWrapper>
             </StyledAnchorLink>
           </ShareWithIconContainer>
-        </>
+        </LinkContainer>
       )}
     </>
   )
@@ -99,5 +104,9 @@ const IconWrapper = styled.div`
 
 const ShareWithIconContainer = styled.div`
   display: flex;
+  margin-top: 2rem;
+`
+
+const LinkContainer = styled.div`
   margin-top: 2rem;
 `
