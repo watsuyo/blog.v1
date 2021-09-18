@@ -4,7 +4,7 @@
         <title>watsuyo.dev</title>
         <link>https://watsuyo.dev</link>
         <description>@watsuyoのブログサイトです. JavaScript,Vue.js,React.js,Nuxt.js,Next.js,UI/UX,デザイン、フロントエンドに関して投稿します. This is @watsuyo's blog.I post about JavaScript, Vue.js, React.js, Nuxt.js, Next.js, UI/UX,Design,Front-End.</description>
-        <lastBuildDate>Sat, 18 Sep 2021 07:24:08 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 18 Sep 2021 10:00:17 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Next.js using Feed for Node.js</generator>
         <language>ja</language>
@@ -43,7 +43,7 @@ markdownファイルを、HTMLに変換してWeb上に公開することにな�
 
 最新技術で日々メンテナンスが出来るものが作りたかったのが大きいかなと思います。
 
-個人ブログのメインユーザーは、自分自身なだけで、エンジニアが作るWebサービスの個人開発にも似たような感覚です。
+個人ブログのメインユーザーは、自分自身でありブログを読んでくださる方なので、エンジニアが作るWebサービスの個人開発にも似たような感覚です。
 
 Next.jsを使って見たかったといえば、それまでですが、SSGなWebサイトは2020年代に入ってから特に注目されている分野ですし、試すなら今！みたいな所もありました。
 
@@ -119,7 +119,7 @@ src
 │   │   └── hello.ts
 │   └── index.tsx
 └── styles
-    ├── Home.module.css
+    ├── Home.package.css
     └── globals.css
 ```
 
@@ -163,7 +163,7 @@ $ yarn dev
 
 立ち上がったらブラウザで確認してみると、以下のような画面が表示されると思います。
 
-![http://localhost:3000/](https://i.gyazo.com/731048b56c77bb2cc75491013675900a.png)(https://gyazo.com/731048b56c77bb2cc75491013675900a.png)
+![http://localhost:3000/](https://i.gyazo.com/731048b56c77bb2cc75491013675900a.png)
 
 ひとまず、ブログを作る第一歩は完成しました。
 
@@ -196,65 +196,78 @@ $ yarn dev
 {
 　略
   "dependencies": {
-    "@emotion/styled": "^11.3.0",
-    "@theme-ui/presets": "^0.11.2",
-    "front-matter": "^4.0.2",
-    "gray-matter": "^4.0.3",
+    + "@emotion/styled": "^11.3.0",
+    + "@theme-ui/presets": "^0.11.2",
+    + "gray-matter": "^4.0.3",
     "next": "11.1.2",
-    "next-mdx-enhanced": "^5.0.0",
-    "next-mdx-remote": "^3.0.4",
+    + "next-mdx-enhanced": "^5.0.0",
+    + "next-mdx-remote": "^3.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-icons": "^4.2.0",
-    "theme-ui": "^0.11.2"
+    + "react-icons": "^4.2.0",
+    + "theme-ui": "^0.11.2"
   },
   "devDependencies": {
     "@types/react": "17.0.21",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
-    "babel-plugin-emotion": "^11.0.0",
+    + "@typescript-eslint/eslint-plugin": "^4.30.0",
+    + "@typescript-eslint/parser": "^4.30.0",
+    + "babel-plugin-emotion": "^11.0.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "11.1.2",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-react": "^7.25.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "2.4.1",
+    + "eslint-config-prettier": "^8.3.0",
+    + "eslint-plugin-react": "^7.25.1",
+    + "eslint-plugin-react-hooks": "^4.2.0",
+    + "prettier": "2.4.1",
     "typescript": "4.4.3"
   }
 }
 ```
 
-markdownで書いたブログをHTML化するためにMDX関係のpackageを追加します
+markdownで書いたブログをHTML化するためにMDX関係のpackageを追加します。
+今回はNextが提供している @next/mdx ではなく、next-mdx-enhanced を使用します。
+[next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced)は、Next.jsがMDXを読み込んでHTML化してくれます。
+
+[gray-matter](https://github.com/jonschlinkert/gray-matter)は、yaml形式で記述したブログの情報をJSオブジェクト形式に変換してくれます。
+
+以下のようにブログの情報をymlで記述できます。
+
+```md
+---
+title: 'Next.jsとMDXで個人ブログを作ってみた'
+date: '2021/09/18'
+description: 'コンテンツの内容'
+---
+
+# 本文
+```
+
+[next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)は、getServerPropsやgetStaticPropsによって、markdownを読み込むためのものです。
 
 ```bash
 $ yarn next-mdx-enhanced next-mdx-remote gray-matter
 ```
 
-今回は@emotion/styledを使用して、スタイルを当てたいと思います。
+今回は[@emotion/styled](https://github.com/emotion-js/emotion)を使用して、スタイルを当てたいと思います。
 
 ```bash
 $ yarn add @emotion/styled
 ```
 
-```bash
-$ yarn add -D babel-plugin-emotion
-```
-
-ダークモードを実装するために、theme-uiを追加します。
+ダークモードを実装するのとPrismを使って、コードのsyntax highlightingを利用したいので、[theme-ui](https://github.com/system-ui/theme-ui)を追加します。
 
 ```bash
 $ yarn add theme-ui @theme-ui/presets
 ```
 
-Reactでiconを使いたいときはiconをコンポーネントとしてimportできる、react-iconsが便利です。
+Reactでiconを使いたいときはiconをコンポーネントとしてimportできる、[react-icons](https://github.com/react-icons/react-icons)が便利です。
 
 ```bash
 $ yarn add react-icons
 ```
 
-今回、開発で必要なyarn moduleは以上ですが、お好みでESLintやprettierの設定をすると、開発体験を向上できるかと思います。
+今回、開発で必要なyarn packageは以上ですが、お好みでESLintやprettierの設定をすると、開発体験を向上できるかと思います。
 
-moduleを入れ終わったら再度、yarn devで正しく表示されているかを確認してみましょう。
+packageを入れ終わったら再度、yarn devで正しく表示されているかを確認してみましょう。
 
 画面を更新するようなことはしていないと思うので、先ほどと同じ画面が表示されるはずです。
 
