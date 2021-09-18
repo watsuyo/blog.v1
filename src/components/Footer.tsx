@@ -11,12 +11,12 @@ export function Footer() {
       </TextContainer>
       <LinksContainer>
         <LinkContainer>
-          <StyledAnchorLink target="_blank" href="https://github.com/watsuyo" rel="noreferrer">
+          <StyledAnchorLink target="_blank" href="https://github.com/watsuyo" rel="noopener">
             <IoLogoGithub size={28} />
           </StyledAnchorLink>
         </LinkContainer>
         <LinkContainer>
-          <StyledAnchorLink target="_blank" href="https://twitter.com/watsuyo_2" rel="noreferrer">
+          <StyledAnchorLink target="_blank" href="https://twitter.com/watsuyo_2" rel="noopener">
             <IoLogoTwitter size={28} />
           </StyledAnchorLink>
         </LinkContainer>

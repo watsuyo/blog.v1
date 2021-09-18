@@ -53,7 +53,7 @@ export default function Post({
       />
       <MDXRemote {...mdxSource} />
       {source.data.path && (
-        <>
+        <LinkContainer>
           <StyledAnchorLink
             target="_blank"
             href={`https://twitter.com/search?q=watsuyo.dev/blog/${source.data.path}&src=typed_query`}
@@ -87,7 +87,7 @@ export default function Post({
               </IconWrapper>
             </StyledAnchorLink>
           </ShareWithIconContainer>
-        </>
+        </LinkContainer>
       )}
     </>
   )
@@ -99,5 +99,9 @@ const IconWrapper = styled.div`
 
 const ShareWithIconContainer = styled.div`
   display: flex;
+  margin-top: 2rem;
+`
+
+const LinkContainer = styled.div`
   margin-top: 2rem;
 `

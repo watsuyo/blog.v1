@@ -6,10 +6,31 @@ import Head from 'Head'
 import { SITE_NAME, PAGE_DESCRIPTION, PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'global'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import * as gtag from 'utils/analytics/gtag'
+
+import Prism from '@theme-ui/prism'
+
+const components = {
+  pre: ({ children }: { children: string }) => <>{children}</>,
+  code: Prism
+}
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} components={components}>
       <BodyContainer>
         <Head
           title={SITE_NAME}
