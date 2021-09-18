@@ -4,7 +4,7 @@
         <title>watsuyo.dev</title>
         <link>https://watsuyo.dev</link>
         <description>@watsuyoのブログサイトです. JavaScript,Vue.js,React.js,Nuxt.js,Next.js,UI/UX,デザイン、フロントエンドに関して投稿します. This is @watsuyo's blog.I post about JavaScript, Vue.js, React.js, Nuxt.js, Next.js, UI/UX,Design,Front-End.</description>
-        <lastBuildDate>Sat, 18 Sep 2021 06:48:50 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 18 Sep 2021 06:59:23 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Next.js using Feed for Node.js</generator>
         <language>ja</language>
