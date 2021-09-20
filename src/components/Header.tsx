@@ -15,7 +15,7 @@ export function Header() {
       <h3>
         <StyledLink href="/">{SITE_NAME}</StyledLink>
       </h3>
-      <div>
+      <LogoContainer>
         <IoLogoRssContainer>
           <StyledLink aria-label="RSS Link" href="/rss/feed.xml">
             <IoLogoRss size={28} />
@@ -28,7 +28,7 @@ export function Header() {
             <IoMdMoon size={28} onClick={toggleColorMode} />
           )}
         </IconButton>
-      </div>
+      </LogoContainer>
     </HeaderContainer>
   )
 }
@@ -43,4 +43,8 @@ const HeaderContainer = styled.div`
 
 const IoLogoRssContainer = styled.span`
   padding-right: 0.4rem;
+`
+
+const LogoContainer = styled.div`
+  display: flex;
 `

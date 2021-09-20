@@ -34,7 +34,10 @@ const StyledFooter = styled.footer`
   margin-top: auto;
 `
 
-const LinksContainer = styled.div``
+const LinksContainer = styled.div`
+  display: flex;
+`
+
 const LinkContainer = styled.span`
   padding: 0.4rem;
 `
