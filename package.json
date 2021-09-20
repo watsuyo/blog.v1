@@ -16,17 +16,21 @@
   },
   "dependencies": {
     "@emotion/styled": "^11.3.0",
+    "@tailwindcss/typography": "^0.4.1",
     "@theme-ui/presets": "^0.11.2",
     "@theme-ui/prism": "^0.11.2",
+    "autoprefixer": "^10.3.4",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "next": "11.1.2",
     "next-mdx-enhanced": "^5.0.0",
     "next-mdx-remote": "^3.0.4",
+    "postcss": "^8.3.6",
     "react": "17.0.2",
     "react-device-detect": "^1.17.0",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
+    "tailwindcss": "^2.2.15",
     "theme-ui": "^0.11.2"
   },
   "devDependencies": {
