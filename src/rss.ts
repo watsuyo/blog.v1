@@ -51,10 +51,10 @@ function generateRssFeed() {
 		})
 	})
 
-	fs.mkdirSync('./public/rss', { recursive: true })
-	fs.writeFileSync('./public/rss/feed.xml', feed.rss2())
-	fs.writeFileSync('./public/rss/atom.xml', feed.atom1())
-	fs.writeFileSync('./public/rss/feed.json', feed.json1())
+	fs.mkdirSync('../public/rss', { recursive: true })
+	fs.writeFileSync('../public/rss/feed.xml', feed.rss2())
+	fs.writeFileSync('../public/rss/atom.xml', feed.atom1())
+	fs.writeFileSync('../public/rss/feed.json', feed.json1())
 }
 
 export default generateRssFeed
