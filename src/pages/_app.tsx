@@ -6,11 +6,9 @@ import Head from 'Head'
 import { SITE_NAME, PAGE_DESCRIPTION, PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'global'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import * as gtag from 'utils/analytics/gtag'
-
+import GoogleAnalytics from 'components/GoogleAnalytics'
 import Prism from '@theme-ui/prism'
+import usePageView from 'hooks/usePageView'
 
 const components = {
   pre: ({ children }: { children: string }) => <>{children}</>,
@@ -18,16 +16,7 @@ const components = {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter()
-  useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      gtag.pageview(url)
-    }
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
+  usePageView()
 
   return (
     <ThemeProvider theme={theme} components={components}>
@@ -39,6 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
           image={PAGE_IMAGE(SITE_NAME)}
           url={DOMAIN}
         />
+        <GoogleAnalytics />
         <Header />
         <Main>
           <Component {...pageProps} />
