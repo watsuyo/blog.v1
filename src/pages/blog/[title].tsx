@@ -63,7 +63,7 @@ export default function Post({
           •{' '}
           <StyledAnchorLink
             target="_blank"
-            href={`https://github.com/watsuyo/blog/edit/main/src/pages/blog/${source.data.path}/index.md`}
+            href={`https://github.com/watsuyo/blog/edit/main/src/pages/blog/${source.data.path}/index.mdx`}
           >
             Edit on GitHub
           </StyledAnchorLink>{' '}

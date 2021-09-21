@@ -9,6 +9,9 @@ import { Header } from 'components/Header'
 import GoogleAnalytics from 'components/GoogleAnalytics'
 import Prism from '@theme-ui/prism'
 import usePageView from 'hooks/usePageView'
+import { MDXProvider } from '@mdx-js/react'
+import MDXComponents from 'components/MDXComponents'
+import 'tailwindcss/tailwind.css'
 
 const components = {
   pre: ({ children }: { children: string }) => <>{children}</>,
@@ -30,8 +33,10 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <GoogleAnalytics />
         <Header />
-        <Main>
-          <Component {...pageProps} />
+        <Main className="mt-5">
+          <MDXProvider components={MDXComponents}>
+            <Component {...pageProps} />
+          </MDXProvider>
         </Main>
         <Footer />
       </BodyContainer>

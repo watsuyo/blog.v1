@@ -1,3 +1,4 @@
+import { PAGE_IMAGE } from 'global';
 import * as path from 'path'
 import * as fs from 'fs'
 import matter from 'gray-matter'
@@ -11,6 +12,7 @@ export type Post = {
   language: string
   matter: string
   stringify(lang: string): string
+  img: string
 }
 
 export const getAllPosts = () => {
@@ -24,8 +26,9 @@ export const getAllPosts = () => {
         .map((fileName) => fs.readFileSync(path.join(dirPath, fileName)))
     })
     .map((f) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { orig, ...post } = matter(f)
-      console.info(orig)
+      post.data['img'] = PAGE_IMAGE(post.data.title)
       return post
     }) as Post[]
 

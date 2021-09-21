@@ -11,7 +11,7 @@ export function Header() {
   const [mode] = useColorMode()
 
   return (
-    <HeaderContainer>
+    <HeaderContainer className="my-2">
       <h3>
         <StyledLink href="/">{SITE_NAME}</StyledLink>
       </h3>
