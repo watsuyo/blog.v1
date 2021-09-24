@@ -1,9 +1,8 @@
 module.exports = {
   purge: ['./src/components/**/*.tsx', './src/pages/**/*.tsx'],
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {}
+  extend: {
+    textOpacity: ['dark']
   },
-  variants: {},
-  plugins: [require('@tailwindcss/typography')]
+  plugins: [require('@tailwindcss/typography')],
+  darkMode: 'class'
 }
