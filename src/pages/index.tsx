@@ -1,8 +1,5 @@
 import { getAllPosts } from 'logic/getAllPosts'
-import { StyledLink } from 'components/styled/StyledLink'
-import { PostContainer } from 'components/styled/PostContainer'
-import { Image, Text } from '@theme-ui/components'
-import styled from '@emotion/styled'
+import Link from 'next/link'
 import { PostData } from 'type'
 import generateRssFeed from 'rss'
 
@@ -10,84 +7,35 @@ type Post = { data: PostData }
 
 const Index = ({ posts }: { posts: Post[] }) => (
   <>
-    <H1Container>
-      <Text
-        sx={{
-          fontSize: 5,
-          fontWeight: 'bold'
-        }}
-      >
-        All Posts
-      </Text>
-    </H1Container>
+    <h1 className="font-bold text-2xl">All Posts</h1>
 
-    {posts.map((p, key: number) => (
-      <PostContainer key={key}>
-        <StyledLink href={`/blog/${p.data.path}`}>
-          <ContentContainer className="pb-4">
-            <ImageWrapper className="px-auto pb-4">
-              <Image className="p-auto" src={p.data.img} alt={p.data.title} />
-            </ImageWrapper>
-            <PostTopAreaContainer>
-              <TitleContainer>
-                <Text
-                  sx={{
-                    fontSize: 4
-                  }}
-                >
-                  {p.data.title}
-                </Text>
-              </TitleContainer>
-
-              <DateContainer>
-                <DateText
-                  sx={{
-                    fontSize: 2
-                  }}
-                >
-                  {p.data.date}
-                </DateText>
-              </DateContainer>
-            </PostTopAreaContainer>
-            <Text
-              sx={{
-                color: '#767676',
-                fontSize: 3
-              }}
-            >
-              {p.data.description}
-            </Text>
-          </ContentContainer>
-        </StyledLink>
-      </PostContainer>
-    ))}
+    <div className="mt-4">
+      {posts.map((p, key: number) => (
+        <div className="mb-1" key={key}>
+          <Link href={`/blog/${p.data.path}`} passHref>
+            <a>
+              <div className="pb-4">
+                <div className="pb-1">
+                  <p className="text-xs text-gray-400" aria-label="Date">
+                    {p.data.date}
+                  </p>
+                </div>
+                <div className="pb-1 min-w-400">
+                  <p className="font-bold text-xl" aria-label="Title">
+                    {p.data.title}
+                  </p>
+                </div>
+                <p className="text-gray-400" aria-label="Description">
+                  {p.data.description}
+                </p>
+              </div>
+            </a>
+          </Link>
+        </div>
+      ))}
+    </div>
   </>
 )
-
-const TitleContainer = styled.div`
-  min-width: 200px;
-`
-
-const DateContainer = styled.div`
-  margin: auto 0;
-`
-
-const DateText = styled(Text)`
-  white-space: nowrap;
-`
-
-const PostTopAreaContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-`
-
-const H1Container = styled.h1`
-  margin: 0 0 16px 0;
-`
-
-const ImageWrapper = styled.div``
-const ContentContainer = styled.div``
 
 export const getStaticProps = () => {
   generateRssFeed()

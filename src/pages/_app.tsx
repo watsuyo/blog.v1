@@ -1,29 +1,22 @@
-import styled from '@emotion/styled'
-import { ThemeProvider } from '@theme-ui/theme-provider'
 import { AppProps } from 'next/app'
-import { theme } from 'logic/style'
 import Head from 'Head'
 import { SITE_NAME, PAGE_DESCRIPTION, PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'global'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
 import GoogleAnalytics from 'components/GoogleAnalytics'
-import Prism from '@theme-ui/prism'
 import usePageView from 'hooks/usePageView'
 import { MDXProvider } from '@mdx-js/react'
 import MDXComponents from 'components/MDXComponents'
 import 'tailwindcss/tailwind.css'
-
-const components = {
-  pre: ({ children }: { children: string }) => <>{children}</>,
-  code: Prism
-}
+import { ThemeProvider } from 'next-themes'
+import 'prismjs/themes/prism-tomorrow.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   usePageView()
 
   return (
-    <ThemeProvider theme={theme} components={components}>
-      <BodyContainer>
+    <ThemeProvider attribute="class">
+      <div className="mx-auto flex min-h-screen max-w-4xl flex-col">
         <Head
           title={SITE_NAME}
           description={PAGE_DESCRIPTION}
@@ -33,25 +26,13 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <GoogleAnalytics />
         <Header />
-        <Main className="mt-5">
+        <div className="mt-4 mx-4">
           <MDXProvider components={MDXComponents}>
             <Component {...pageProps} />
           </MDXProvider>
-        </Main>
+        </div>
         <Footer />
-      </BodyContainer>
+      </div>
     </ThemeProvider>
   )
 }
-
-const BodyContainer = styled.main`
-  margin: 0 auto;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`
-
-const Main = styled.main`
-  padding: 0 1rem;
-`

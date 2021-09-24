@@ -6,83 +6,83 @@ author: watsuyo_2
 path: 'nextjs-mdx-1'
 ---
 
-# Next.jsとMDXで個人ブログを作ってみた
+# Next.js と MDX で個人ブログを作ってみた
 
-## この記事の目標
+### この記事の目標
 
 この記事を読むと誰でも自前の個人ブログを作れるようになることを目指します。(記事のボリュームが想像以上に大きくなったので分割する予定です。)
 
 個人ブログや企業のエンジニアブログのようなものを簡単に作ることができます。
 
-Markdownファイルを、HTMLに変換してWeb上に公開することになるので、実装コードと一緒に記事のMarkdownファイルをGit管理することができます。
+Markdown ファイルを、HTML に変換して Web 上に公開することになるので、実装コードと一緒に記事の Markdown ファイルを Git 管理することができます。
 
-## 技術スタックと開発環境
+### 技術スタックと開発環境
 
-- Next.js 14系
-- TypeScript 4.4系
-- MDX(MarkdownをHTML化)
+- Next.js 14 系
+- TypeScript 4.4 系
+- MDX(Markdown を HTML 化)
 - Vercel(デプロイサーバー)
 - MaxOS Big Sir 11.5.2
 
-## なんで作ったか？
+### なんで作ったか？
 
 最新技術で日々メンテナンスが出来るものが作りたかったのが大きいかなと思います。
 
-個人ブログのメインユーザーは、自分自身でありブログを読んでくださる方なので、エンジニアが作るWebサービスの個人開発にも似たような感覚です。
+個人ブログのメインユーザーは、自分自身でありブログを読んでくださる方なので、エンジニアが作る Web サービスの個人開発にも似たような感覚です。
 
-Next.jsを使って見たかったといえば、それまでですが、SSGなWebサイトは2020年代に入ってから特に注目されている分野ですし、試すなら今！みたいな所もありました。
+Next.js を使って見たかったといえば、それまでですが、SSG な Web サイトは 2020 年代に入ってから特に注目されている分野ですし、試すなら今！みたいな所もありました。
 
-QiitaやZennもありがたく利用していますが、どうしても"いいね"のような数字にとらわれる感じで胃もたれしがちなので、消化の良さそうな個人ブログで胃の中をスッキリさせていこうと思います。
+Qiita や Zenn もありがたく利用していますが、どうしても"いいね"のような数字にとらわれる感じで胃もたれしがちなので、消化の良さそうな個人ブログで胃の中をスッキリさせていこうと思います。
 
-普段はVue.jsを使うことがほとんどなので、React.jsを使うのはどうなの？という点については、全然問題ないです。
+普段は Vue.js を使うことがほとんどなので、React.js を使うのはどうなの？という点については、全然問題ないです。
 
 ドキュメントや先駆者のブログに大体の答えは書いてあります。
 
-## なんでNext.jsにしたのか？
+### なんで Next.js にしたのか？
 
-流行りのフレームワークの勉強をしたかったのと、大きな理由はSSG(Static Site Generation)できるからです。
+流行りのフレームワークの勉強をしたかったのと、大きな理由は SSG(Static Site Generation)できるからです。
 
-静的なブログサイトを作るだけのためにSSRやSPAですと、初回レンダリングやSEOに課題があるため(改善方法はありますが)、要件を素早く解消してくれるNext.jsを選定しました。
+静的なブログサイトを作るだけのために SSR や SPA ですと、初回レンダリングや SEO に課題があるため(改善方法はありますが)、要件を素早く解消してくれる Next.js を選定しました。
 
-またVercelへのデプロイと組み合わせると、Vercelの自動キャッシュ機能を利用することができ、デプロイごとに静的ファイルを自動でキャッシュしてくれます。詳細↓
+また Vercel へのデプロイと組み合わせると、Vercel の自動キャッシュ機能を利用することができ、デプロイごとに静的ファイルを自動でキャッシュしてくれます。詳細 ↓
 
 https://vercel.com/docs/edge-network/caching
 
-SSGの場合、初回レンダリングやパフォーマンスの面でも優れています。
+SSG の場合、初回レンダリングやパフォーマンスの面でも優れています。
 
-軽く、SSGについて整理をします。
+軽く、SSG について整理をします。
 
-SSGの大きな特徴は、予めHTMLをレンダリングしておき、ユーザーからのリクエスト(画面遷移等)に応じて用意しておいたHTMLを返却するだけといったものです。
+SSG の大きな特徴は、予め HTML をレンダリングしておき、ユーザーからのリクエスト(画面遷移等)に応じて用意しておいた HTML を返却するだけといったものです。
 
-これがSSGで無い場合は、ユーザーからのリクエストの度にHTMLを生成して、それを返却する形式になっています。
+これが SSG で無い場合は、ユーザーからのリクエストの度に HTML を生成して、それを返却する形式になっています。
 
-今回はそのSSGで生成するHTMLを一部、Markdownからの変換されたHTMLでレンダリングするようにしています。
+今回はその SSG で生成する HTML を一部、Markdown からの変換された HTML でレンダリングするようにしています。
 
-ブログ記事はMarkdownで記述し、所定のディレクトリに配置するだけでルーティングも良い感じにしてくれる実装を今回はしました。
+ブログ記事は Markdown で記述し、所定のディレクトリに配置するだけでルーティングも良い感じにしてくれる実装を今回はしました。
 
-## watsuyo.devのドメインはどうしたの？
+### watsuyo.dev のドメインはどうしたの？
 
-domain.comで買いました。
+domain.com で買いました。
 
 欲しいドメイン名は初めから決めていたので、国内外のドメイン販売サービスを比較しながら一番安い所で買いました。
 
-GitHubにmainブランチをPushすると、予め連携しておいたVercelのプロジェクトにDeployされます。
+GitHub に main ブランチを Push すると、予め連携しておいた Vercel のプロジェクトに Deploy されます。
 
-後はVecelとdomain.comにIPアドレスを設定するだけで、watsuyo.devにアクセスできます。
+後は Vecel と domain.com に IP アドレスを設定するだけで、watsuyo.dev にアクセスできます。
 
-## 本題
+### 本題
 
-### ローカルにプロジェクトを作成する
+#### ローカルにプロジェクトを作成する
 
-まずはローカルにNext.jsのプロジェクトを作成します。
+まずはローカルに Next.js のプロジェクトを作成します。
 
-今回はTypeScriptを使いたいので、TypeScriptのoptionをつけます。
+今回は TypeScript を使いたいので、TypeScript の option をつけます。
 
 ```bash
 $ yarn create next-app --typescript
 ```
 
-デフォルトではpagesディレクトリがsrcディレクトリに入っていないので、srcディレクトリに移動をし、tsconfig.jsにあるエイリアスの設定も変更します。
+デフォルトでは pages ディレクトリが src ディレクトリに入っていないので、src ディレクトリに移動をし、tsconfig.js にあるエイリアスの設定も変更します。
 
 ```json
 "compilerOptions": {
@@ -90,48 +90,48 @@ $ yarn create next-app --typescript
 }
 ```
 
-src以下は、現段階では以下のような構成になります。
+src 以下は、現段階では以下のような構成になります。
 
-src配下に配置するかしないかの判断基準は、画面実装に直接関係があるかで判断しています。
+src 配下に配置するかしないかの判断基準は、画面実装に直接関係があるかで判断しています。
 
-```
+```markdown
 src
 ├── pages
-│   ├── _app.tsx
+│   ├── \_app.tsx
 │   ├── api
 │   │   └── hello.ts
 │   └── index.tsx
 └── styles
-    ├── Home.package.css
-    └── globals.css
+├── Home.package.css
+└── globals.css
 ```
 
-今後、共通コンポーネント作成した時には `components`といったディレクトリ配下にコンポーネントを配置して、`components`もsrc配下に配置するのが妥当かと思います。
+今後、共通コンポーネント作成した時には `components`といったディレクトリ配下にコンポーネントを配置して、`components`も src 配下に配置するのが妥当かと思います。
 
 以下は、今回の最終目標的な構成になります。
 
-```
+```markdown
 src
 ├── Head.tsx
 ├── components
 │   ├── Footer.tsx
 │   ├── Header.tsx
 │   └── styled
-│       ├── PostContainer.ts
-│       ├── StyledAnchorLink.ts
-│       ├── StyledCard.ts
-│       └── StyledLink.ts
+│   ├── PostContainer.ts
+│   ├── StyledAnchorLink.ts
+│   ├── StyledCard.ts
+│   └── StyledLink.ts
 ├── global.ts
 ├── logic
 │   ├── getAllPosts.ts
 │   └── style.ts
 ├── pages
-│   ├── _app.tsx
-│   ├── _documents.tsx
+│   ├── \_app.tsx
+│   ├── \_documents.tsx
 │   ├── blog
 │   │   ├── [title].tsx
 │   │   └── sample-blog
-│   │       └── index.mdx
+│   │   └── index.mdx
 │   ├── index.tsx
 └── type.ts
 ```
@@ -150,11 +150,11 @@ $ yarn dev
 
 ひとまず、ブログを作る第一歩は完成しました。
 
-適宜、commitをしておきましょう
+適宜、commit をしておきましょう
 
-次はpackageです。
+次は package です。
 
-初期の段階で以下のようなpackage.jsonになっていると思うので
+初期の段階で以下のような package.json になっていると思うので
 
 ```json
 {
@@ -173,7 +173,7 @@ $ yarn dev
 }
 ```
 
-今回の開発で必要になるyarn packageをインストールします。
+今回の開発で必要になる yarn package をインストールします。
 
 ```json
 {
@@ -206,13 +206,13 @@ $ yarn dev
 }
 ```
 
-Markdownで書いたブログをHTML化するためにMDX関係のpackageを追加します。
-今回はNextが提供している @next/mdx ではなく、next-mdx-enhanced を使用します。
-[next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced)は、Next.jsがMDXを読み込んでHTML化してくれます。
+Markdown で書いたブログを HTML 化するために MDX 関係の package を追加します。
+今回は Next が提供している @next/mdx ではなく、next-mdx-enhanced を使用します。
+[next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced)は、Next.js が MDX を読み込んで HTML 化してくれます。
 
-[gray-matter](https://github.com/jonschlinkert/gray-matter)は、yaml形式で記述したブログの情報をJSオブジェクト形式に変換してくれます。
+[gray-matter](https://github.com/jonschlinkert/gray-matter)は、yaml 形式で記述したブログの情報を JS オブジェクト形式に変換してくれます。
 
-以下のようにブログの情報をymlで記述できます。
+以下のようにブログの情報を yml で記述できます。
 
 ```md
 ---
@@ -225,7 +225,7 @@ img:
 # 本文
 ```
 
-[next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)は、getServerPropsやgetStaticPropsによって、Markdownを読み込むためのものです。
+[next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)は、getServerProps や getStaticProps によって、Markdown を読み込むためのものです。
 
 ```bash
 $ yarn next-mdx-enhanced next-mdx-remote gray-matter
@@ -237,31 +237,32 @@ $ yarn next-mdx-enhanced next-mdx-remote gray-matter
 $ yarn add @emotion/styled
 ```
 
-ダークモードを実装するのとPrismを使って、コードのsyntax highlightingを利用したいので、[theme-ui](https://github.com/system-ui/theme-ui)を追加します。
+ダークモードを実装するのと Prism を使って、コードの syntax highlighting を利用したいので、[theme-ui](https://github.com/system-ui/theme-ui)を追加します。
 
 ```bash
 $ yarn add theme-ui @theme-ui/presets
 ```
 
-Reactでiconを使いたいときはiconをコンポーネントとしてimportできる、[react-icons](https://github.com/react-icons/react-icons)が便利です。
+React で icon を使いたいときは icon をコンポーネントとして import できる、[react-icons](https://github.com/react-icons/react-icons)が便利です。
 
 ```bash
 $ yarn add react-icons
 ```
 
-今回、開発で必要なyarn packageは以上ですが、お好みでESLintやprettierの設定をすると、開発体験を向上できるかと思います。
+今回、開発で必要な yarn package は以上ですが、お好みで ESLint や prettier の設定をすると、開発体験を向上できるかと思います。
 
-packageを入れ終わったら再度、yarn devで正しく表示されているかを確認してみましょう。
+package を入れ終わったら再度、yarn dev で正しく表示されているかを確認してみましょう。
 
 画面を更新するようなことはしていないと思うので、先ほどと同じ画面が表示されるはずです。
 
-1つの記事で全て書き切ろうと思いましたが、ここまでかなりのボリュームになったので、続きは次回のブログにしようかなと思います。
+1 つの記事で全て書き切ろうと思いましたが、ここまでかなりのボリュームになったので、続きは次回のブログにしようかなと思います。
 
-次は早速、Markdownで書いたブログをHTML化して表示させてみます。
+次は早速、Markdown で書いたブログを HTML 化して表示させてみます。
 
-## 参考
-- [Next.jsで作る技術ブログ [Part1 - セットアップ]](https://youtu.be/5obR4PzQObI)
-- [Next.js + MDXでブログを作った](https://titanicrising.jp/blog/nextjs-mdx)
+### 参考
+
+- [Next.js で作る技術ブログ [Part1 - セットアップ]](https://youtu.be/5obR4PzQObI)
+- [Next.js + MDX でブログを作った](https://titanicrising.jp/blog/nextjs-mdx)
 - [Next.js でブログを作り直した](https://queq1890.info/blog/new-blog)
-- [Next.js + MDXでブログを作る 〜 Blanktarの場合](https://blanktar.jp/blog/2020/05/how-to-make-blog-with-nextjs)
+- [Next.js + MDX でブログを作る 〜 Blanktar の場合](https://blanktar.jp/blog/2020/05/how-to-make-blog-with-nextjs)
 - [Next.js + MDX で自分用ブログシステムを再構築した](https://blog.fohte.net/posts/2020-06-07-next-js-mdx)

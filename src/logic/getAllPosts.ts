@@ -1,4 +1,3 @@
-import { PAGE_IMAGE } from 'global';
 import * as path from 'path'
 import * as fs from 'fs'
 import matter from 'gray-matter'
@@ -28,10 +27,8 @@ export const getAllPosts = () => {
     .map((f) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { orig, ...post } = matter(f)
-      post.data['img'] = PAGE_IMAGE(post.data.title)
       return post
     }) as Post[]
-
 
   return posts
 }

@@ -4,11 +4,12 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { blogDirPath, getAllPosts } from 'logic/getAllPosts'
 import Head from 'Head'
 import { PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'global'
-import { StyledAnchorLink } from 'components/styled/StyledAnchorLink'
 import { SiHatenabookmark, SiTwitter } from 'react-icons/si'
-import styled from '@emotion/styled'
 import { PostData } from 'type'
 import generateRssFeed from 'rss'
+import BreadCrumbs from 'components/breadcrumbs'
+import Prism from 'prismjs'
+import { useEffect } from 'react'
 
 export const getStaticPaths: GetStaticPaths = () => {
   generateRssFeed()
@@ -42,6 +43,10 @@ export default function Post({
   params?: Pick<PostData, 'title'>
   dirPath: string
 }) {
+  useEffect(() => {
+    Prism.highlightAll()
+  })
+
   return (
     <>
       <Head
@@ -51,57 +56,66 @@ export default function Post({
         image={PAGE_IMAGE(source.data.title)}
         url={`${DOMAIN}${dirPath}`}
       />
-      <MDXRemote {...mdxSource} />
-      {source.data.path && (
-        <LinkContainer>
-          <StyledAnchorLink
-            target="_blank"
-            href={`https://twitter.com/search?q=watsuyo.dev/blog/${source.data.path}&src=typed_query`}
-          >
-            Discuss on Twitter
-          </StyledAnchorLink>{' '}
-          •{' '}
-          <StyledAnchorLink
-            target="_blank"
-            href={`https://github.com/watsuyo/blog/edit/main/src/pages/blog/${source.data.path}/index.mdx`}
-          >
-            Edit on GitHub
-          </StyledAnchorLink>{' '}
-          <ShareWithIconContainer>
-            <span>Share With </span>
-            <StyledAnchorLink
-              href={`https://b.hatena.ne.jp/entry/s/watsuyo.dev/blog/${source.data.path}`}
+      <BreadCrumbs
+        posts={[
+          {
+            string: 'Home',
+            path: '/'
+          },
+          {
+            string: source.data.title
+          }
+        ]}
+      />
+      <div className="mt-10">
+        <time>{source.data.date}</time>
+        <MDXRemote {...mdxSource} />
+        {source.data.path && (
+          <div className="mt-6">
+            <a
               target="_blank"
+              href={`https://twitter.com/search?q=watsuyo.dev/blog/${source.data.path}&src=typed_query`}
+              rel="noopener noreferrer"
+              aria-label="Twitter"
             >
-              <IconWrapper>
-                <SiHatenabookmark size={28} />
-              </IconWrapper>
-            </StyledAnchorLink>{' '}
-            <StyledAnchorLink
-              href={`https://twitter.com/intent/tweet?text=${source.data.title}%20%7C%20@${source.data.author}&url=https://watsuyo.dev/blog/${source.data.path}`}
+              Discuss on Twitter
+            </a>{' '}
+            •{' '}
+            <a
               target="_blank"
+              href={`https://github.com/watsuyo/blog/edit/main/src/pages/blog/${source.data.path}/index.mdx`}
+              rel="noopener noreferrer"
+              aria-label="GitHub"
             >
-              {' '}
-              <IconWrapper>
-                <SiTwitter size={28} />
-              </IconWrapper>
-            </StyledAnchorLink>
-          </ShareWithIconContainer>
-        </LinkContainer>
-      )}
+              Edit on GitHub
+            </a>{' '}
+            <div className="flex mt-6">
+              <span>Share With </span>
+              <a
+                href={`https://b.hatena.ne.jp/entry/s/watsuyo.dev/blog/${source.data.path}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Hatena"
+              >
+                <div className="ml-1">
+                  <SiHatenabookmark size={28} />
+                </div>
+              </a>{' '}
+              <a
+                href={`https://twitter.com/intent/tweet?text=${source.data.title}%20%7C%20@${source.data.author}&url=https://watsuyo.dev/blog/${source.data.path}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              >
+                {' '}
+                <div className="ml-1">
+                  <SiTwitter size={28} />
+                </div>
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
     </>
   )
 }
-
-const IconWrapper = styled.div`
-  margin-left: 0.5rem;
-`
-
-const ShareWithIconContainer = styled.div`
-  display: flex;
-  margin-top: 2rem;
-`
-
-const LinkContainer = styled.div`
-  margin-top: 2rem;
-`

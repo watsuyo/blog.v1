@@ -1,50 +1,24 @@
-import styled from '@emotion/styled'
-import { IoMdSunny, IoMdMoon, IoLogoRss } from 'react-icons/io'
+import { IoLogoRss } from 'react-icons/io'
 import { SITE_NAME } from 'global'
-import { ColorMode, useToggleColorMode } from 'logic/style'
-import { useColorMode } from '@theme-ui/color-modes'
-import { StyledLink } from './styled/StyledLink'
-import { IconButton } from '@theme-ui/components'
+import Link from 'next/link'
+import { ToggleDarkMode } from 'components/ToggleDarkMode'
 
 export function Header() {
-  const toggleColorMode = useToggleColorMode()
-  const [mode] = useColorMode()
-
   return (
-    <HeaderContainer className="my-2">
-      <h3>
-        <StyledLink href="/">{SITE_NAME}</StyledLink>
-      </h3>
-      <LogoContainer>
-        <IoLogoRssContainer>
-          <StyledLink aria-label="RSS Link" href="/rss/feed.xml">
-            <IoLogoRss size={28} />
-          </StyledLink>
-        </IoLogoRssContainer>
-        <IconButton aria-label="toggle color mode">
-          {mode === ColorMode.Dark ? (
-            <IoMdSunny size={28} onClick={toggleColorMode} />
-          ) : (
-            <IoMdMoon size={28} onClick={toggleColorMode} />
-          )}
-        </IconButton>
-      </LogoContainer>
-    </HeaderContainer>
+    <div className="my-2 flex justify-between px-4">
+      <Link href="/">
+        <a>{SITE_NAME}</a>
+      </Link>
+      <div className="flex">
+        <div className="pr-1">
+          <Link aria-label="RSS Link" href="/rss/feed.xml" passHref>
+            <a>
+              <IoLogoRss size={28} />
+            </a>
+          </Link>
+        </div>
+        <ToggleDarkMode />
+      </div>
+    </div>
   )
 }
-
-const HeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-  align-self: stretch;
-  justify-content: space-between;
-  padding: 0 1rem;
-`
-
-const IoLogoRssContainer = styled.span`
-  padding-right: 0.4rem;
-`
-
-const LogoContainer = styled.div`
-  display: flex;
-`

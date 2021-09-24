@@ -1,45 +1,34 @@
-import styled from '@emotion/styled'
-import { Text } from '@theme-ui/components'
 import { IoLogoGithub, IoLogoTwitter } from 'react-icons/io'
-import { StyledAnchorLink } from './styled/StyledAnchorLink'
 
 export function Footer() {
   return (
-    <StyledFooter>
-      <TextContainer>
-        <Text>© 2021 watsuyo</Text>
-      </TextContainer>
-      <LinksContainer>
-        <LinkContainer>
-          <StyledAnchorLink target="_blank" href="https://github.com/watsuyo" rel="noopener">
+    <div className="flex justify-between flex-wrap px-4 pt-10 pb-4 mt-auto">
+      <div>
+        <span>© 2021 watsuyo </span>
+        <span>/ This site uses Google Analytics.</span>
+      </div>
+      <div className="flex">
+        <div className="p-1">
+          <a
+            target="_blank"
+            href="https://github.com/watsuyo"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
             <IoLogoGithub size={28} />
-          </StyledAnchorLink>
-        </LinkContainer>
-        <LinkContainer>
-          <StyledAnchorLink target="_blank" href="https://twitter.com/watsuyo_2" rel="noopener">
+          </a>
+        </div>
+        <div className="p-1">
+          <a
+            target="_blank"
+            href="https://twitter.com/watsuyo_2"
+            rel="noopener noreferrer"
+            aria-label="Twitter"
+          >
             <IoLogoTwitter size={28} />
-          </StyledAnchorLink>
-        </LinkContainer>
-      </LinksContainer>
-    </StyledFooter>
+          </a>
+        </div>
+      </div>
+    </div>
   )
 }
-
-const StyledFooter = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 3rem 1rem;
-  margin-top: auto;
-`
-
-const LinksContainer = styled.div`
-  display: flex;
-`
-
-const LinkContainer = styled.span`
-  padding: 0.4rem;
-`
-
-const TextContainer = styled.div``
