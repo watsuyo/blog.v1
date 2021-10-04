@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import * as path from 'path'
 import * as fs from 'fs'
 import matter from 'gray-matter'
@@ -30,5 +31,7 @@ export const getAllPosts = () => {
       return post
     }) as Post[]
 
-  return posts
+  return posts.sort((a, b) =>
+    Number(b.data.date.replace(/\//g, '')) - Number(a.data.date.replace(/\//g, ''))
+  )
 }
