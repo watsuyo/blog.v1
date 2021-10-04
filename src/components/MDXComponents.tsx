@@ -21,7 +21,7 @@ const CustomLink = (props: { children: string; href: string }) => {
   const externalProps = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 
   return (
-    <a className="underline" {...props} {...externalProps}>
+    <a className="underline break-all" {...props} {...externalProps}>
       {children}
     </a>
   )
