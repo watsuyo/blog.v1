@@ -20,7 +20,7 @@ function generateRssFeed() {
     language: 'ja',
     image: ICON,
     favicon: ICON,
-    copyright: `© 2021 watsuyo`,
+    copyright: `© 2022 watsuyo`,
     updated: date,
     generator: 'Next.js using Feed for Node.js',
     feedLinks: {
