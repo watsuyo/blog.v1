@@ -44,7 +44,7 @@ export default function App({ Component, pageProps }: MyAppProps) {
         <Header />
         <div className="mt-4 mx-4">
           {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-          {/* @ts-expect-error */}
+          {/* @ts-ignore */}
           <MDXProvider components={MDXComponents}>
             <Component {...pageProps} />
           </MDXProvider>
