@@ -1,3 +1,5 @@
+import { DOMAIN } from 'global'
+
 export default function robots() {
   return {
     rules: {
@@ -5,6 +7,6 @@ export default function robots() {
       allow: '/',
       disallow: '/private/'
     },
-    sitemap: `https://post.watsuyo.dev/sitemap.xml`
+    sitemap: `${DOMAIN}/sitemap.xml`
   }
 }

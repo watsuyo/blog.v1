@@ -13,23 +13,21 @@ const Index = ({ posts }: { posts: Post[] }) => (
       {posts.map((p, key: number) => (
         <div className="mb-1" key={key}>
           <Link href={`/blog/${p.data.path}`} passHref>
-            <a>
-              <div className="pb-4">
-                <div className="pb-1">
-                  <p className="text-xs text-gray-400" aria-label="Date">
-                    {p.data.date}
-                  </p>
-                </div>
-                <div className="pb-1 min-w-400">
-                  <p className="font-bold text-xl" aria-label="Title">
-                    {p.data.title}
-                  </p>
-                </div>
-                <p className="text-gray-400" aria-label="Description">
-                  {p.data.description}
+            <div className="pb-4">
+              <div className="pb-1">
+                <p className="text-xs text-gray-400" aria-label="Date">
+                  {p.data.date}
                 </p>
               </div>
-            </a>
+              <div className="pb-1 min-w-400">
+                <p className="font-bold text-xl" aria-label="Title">
+                  {p.data.title}
+                </p>
+              </div>
+              <p className="text-gray-400" aria-label="Description">
+                {p.data.description}
+              </p>
+            </div>
           </Link>
         </div>
       ))}

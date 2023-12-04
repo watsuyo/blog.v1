@@ -12,12 +12,20 @@ import 'tailwindcss/tailwind.css'
 import { ThemeProvider } from 'next-themes'
 import 'prismjs/themes/prism-tomorrow.css'
 import { NextComponentType } from 'next'
+import { Components } from '@mdx-js/react/lib'
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-type ReactElementFixed = React.ReactElement<any, any> | React.Component<{}, any, any> | null
-
+// any は使わない
+type ReactElementFixed =
+  | React.ReactElement
+  | React.ReactNodeArray
+  | React.ReactPortal
+  | boolean
+  | null
+  | undefined
 interface MyAppProps extends AppProps {
-  Component: NextComponentType<any, any, Record<string, unknown>> & ReactElementFixed
+  Component: NextComponentType & {
+    layout?: (children: ReactElementFixed) => ReactElementFixed
+  }
 }
 
 export default function App({ Component, pageProps }: MyAppProps) {
@@ -36,8 +44,8 @@ export default function App({ Component, pageProps }: MyAppProps) {
         <GoogleAnalytics />
         <Header />
         <div className="mt-4 mx-4">
-          <MDXProvider components={MDXComponents}>
-            {React.createElement(Component, pageProps)}
+          <MDXProvider components={MDXComponents as Components}>
+            <Component {...pageProps} />
           </MDXProvider>
         </div>
         <Footer />

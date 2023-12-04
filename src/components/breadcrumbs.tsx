@@ -21,7 +21,7 @@ export default function BreadCrumbs({
             <>
               {path && (
                 <Link href={path} passHref>
-                  <a>{string}</a>
+                  {string}
                 </Link>
               )}
               <FaChevronRight aria-hidden="true" className="text-xs mx-2" />

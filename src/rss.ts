@@ -8,7 +8,7 @@ function generateRssFeed() {
   const date = new Date()
   const author = {
     name: 'watsuyo',
-    email: 'dmwtpdmwtp24@gmail.com',
+    email: 'watsuyo.dev@gmail.com',
     link: 'https://twitter.com/watsuyo_2'
   }
 

@@ -7,7 +7,7 @@ export function Header() {
   return (
     <div className="my-2 flex justify-between px-4">
       <Link href="/">
-        <a>{SITE_NAME}</a>
+        {SITE_NAME}
       </Link>
       <div className="flex">
         {/* <div className="pr-1">
