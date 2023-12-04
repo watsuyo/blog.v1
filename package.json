@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
+    "@vercel/og": "^0.5.20",
     "autoprefixer": "^10.4.16",
     "caniuse-lite": "^1.0.30001566",
     "feed": "^4.2.2",

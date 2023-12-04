@@ -3,7 +3,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { blogDirPath, getAllPosts } from 'logic/getAllPosts'
 import Head from 'Head'
-import { PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'global'
+import { PAGE_KEYWORD, DOMAIN } from 'global'
 import { SiHatenabookmark, SiTwitter } from 'react-icons/si'
 import { PostData } from 'type'
 import generateRssFeed from 'rss'
@@ -53,7 +53,6 @@ export default function Post({
         title={source.data.title}
         description={source.data.description}
         keyword={PAGE_KEYWORD}
-        image={PAGE_IMAGE(source.data.title)}
         url={`${DOMAIN}${dirPath}`}
       />
       <BreadCrumbs

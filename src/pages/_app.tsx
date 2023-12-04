@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import React from 'react'
 import Head from 'Head'
-import { SITE_NAME, PAGE_DESCRIPTION, PAGE_IMAGE, PAGE_KEYWORD, DOMAIN } from 'global'
+import { SITE_NAME, PAGE_DESCRIPTION, PAGE_KEYWORD, DOMAIN } from 'global'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
 import GoogleAnalytics from 'components/GoogleAnalytics'
@@ -37,7 +37,6 @@ export default function App({ Component, pageProps }: MyAppProps) {
           title={SITE_NAME}
           description={PAGE_DESCRIPTION}
           keyword={PAGE_KEYWORD}
-          image={PAGE_IMAGE(SITE_NAME)}
           url={DOMAIN}
         />
         <GoogleAnalytics />

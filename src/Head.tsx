@@ -1,24 +1,24 @@
 import Head from 'next/head'
 
-import { SITE_NAME, ICON, PAGE_TYPE } from 'global'
+import { SITE_NAME, ICON, PAGE_TYPE, DOMAIN } from 'global'
 
 interface Props {
   title: string
   description: string
   keyword: string
-  image: string
   url: string
 }
 
 // eslint-disable-next-line react/display-name
-export default ({ title, description, keyword, image, url }: Props): JSX.Element => {
+export default ({ title, description, keyword, url }: Props): JSX.Element => {
   const TITLE = SITE_NAME === title ? SITE_NAME : `${SITE_NAME} | ${title}`
+  const IMAGE = `${DOMAIN}/api/og?title=${TITLE}`
   return (
     <Head>
       <title>{TITLE}</title>
       <meta name="keywords" content={keyword} />
       <meta name="description" content={description} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={IMAGE} />
       <meta property="og:type" content={PAGE_TYPE} />
       <meta property="og:title" content={TITLE} />
       <meta property="og:description" content={description} />
@@ -28,7 +28,7 @@ export default ({ title, description, keyword, image, url }: Props): JSX.Element
       <meta name="twitter:url" content={url} />
       <meta name="twitter:title" content={TITLE} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={IMAGE} />
       <link rel="icon" href={ICON} />
       <link rel="canonical" href={url} />
       <link rel="shortcut icon" href={ICON} />
