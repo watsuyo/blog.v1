@@ -12,7 +12,6 @@ import 'tailwindcss/tailwind.css'
 import { ThemeProvider } from 'next-themes'
 import 'prismjs/themes/prism-tomorrow.css'
 import { NextComponentType } from 'next'
-import { Components } from '@mdx-js/react/lib'
 
 // any は使わない
 type ReactElementFixed =
@@ -44,7 +43,9 @@ export default function App({ Component, pageProps }: MyAppProps) {
         <GoogleAnalytics />
         <Header />
         <div className="mt-4 mx-4">
-          <MDXProvider components={MDXComponents as Components}>
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          {/* @ts-expect-error */}
+          <MDXProvider components={MDXComponents}>
             <Component {...pageProps} />
           </MDXProvider>
         </div>
