@@ -1,12 +1,10 @@
-import { MetadataRoute } from 'next'
- 
-export default function robots(): MetadataRoute.Robots {
+export default function robots() {
   return {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/',
+      disallow: '/private/'
     },
-    sitemap: `https://post.watsuyo.dev/sitemap.xml`,
+    sitemap: `https://post.watsuyo.dev/sitemap.xml`
   }
 }
