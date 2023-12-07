@@ -1,22 +1,29 @@
-import { NextApiResponse } from 'next'
-import React from 'react'
+import { DOMAIN } from 'global';
+import { SitemapStream, streamToPromise } from 'sitemap';
+import { Readable } from 'stream';
 
-const getSitemap = () => `<?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://example.com/</loc>
-    <lastmod>2021/09/06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-</urlset>`
+// ウェブサイトのURLと、サイト内のすべてのページのパスのリスト
+const pages = [
+  '/',
+  '/blog',
+];
 
-class Sitemap extends React.Component {
-  public static getInitialProps({ res }: { res: NextApiResponse }) {
-    res.setHeader('Content-Type', 'text/xml')
-    res.write(getSitemap())
-    res.end()
-  }
+export default async function generateSitemap() {
+  const links = pages.map(page => {
+    return {
+      url: page,
+      changefreq: 'always',
+      priority: 0.9,
+    };
+  });
+
+  const stream = new SitemapStream({ hostname: DOMAIN });
+  const xmlStream = new Readable().wrap(stream);
+
+  links.forEach(link => stream.write(link));
+  stream.end();
+
+  const sitemapXml = await streamToPromise(xmlStream).then(data => data.toString());
+
+  return sitemapXml;
 }
-
-export default Sitemap

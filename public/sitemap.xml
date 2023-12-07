@@ -1,0 +1,46 @@
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      
+            <url>
+              <loc>https://posts.watsuyo.dev/</loc>
+            </url>
+          
+            <url>
+              <loc>https://posts.watsuyo.dev//blog/2021-10-02</loc>
+            </url>
+          
+            <url>
+              <loc>https://posts.watsuyo.dev//blog/2021-10-03</loc>
+            </url>
+          
+            <url>
+              <loc>https://posts.watsuyo.dev//blog/2021-10-04</loc>
+            </url>
+          
+            <url>
+              <loc>https://posts.watsuyo.dev//blog/2021-10-05</loc>
+            </url>
+          
+            <url>
+              <loc>https://posts.watsuyo.dev//blog/2021-10-06</loc>
+            </url>
+          
+            <url>
+              <loc>https://posts.watsuyo.dev//blog/2022-12-02</loc>
+            </url>
+          
+            <url>
+              <loc>https://posts.watsuyo.dev//blog/design-system-matome-202109</loc>
+            </url>
+          
+            <url>
+              <loc>https://posts.watsuyo.dev//blog/nextjs-mdx-1</loc>
+            </url>
+          
+            <url>
+              <loc>https://posts.watsuyo.dev//blog/student-engineer</loc>
+            </url>
+          
+    </urlset>
+  
