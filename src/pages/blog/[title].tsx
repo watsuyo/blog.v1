@@ -73,7 +73,7 @@ export default function Post({
           <div className="mt-6">
             <a
               target="_blank"
-              href={`https://twitter.com/search?q=watsuyo.dev/blog/${source.data.path}&src=typed_query`}
+              href={`https://twitter.com/search?q=${DOMAIN}/blog/${source.data.path}&src=typed_query`}
               rel="noopener noreferrer"
               aria-label="Twitter"
             >
@@ -91,7 +91,7 @@ export default function Post({
             <div className="flex mt-6">
               <span>Share With </span>
               <a
-                href={`https://b.hatena.ne.jp/entry/s/watsuyo.dev/blog/${source.data.path}`}
+                href={`https://b.hatena.ne.jp/entry/s/${DOMAIN}/blog/${source.data.path}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Hatena"
@@ -101,7 +101,7 @@ export default function Post({
                 </div>
               </a>{' '}
               <a
-                href={`https://twitter.com/intent/tweet?text=${source.data.title}%20%7C%20@${source.data.author}&url=https://watsuyo.dev/blog/${source.data.path}`}
+                href={`https://twitter.com/intent/tweet?text=${source.data.title}%20%7C%20&url=${DOMAIN}/blog/${source.data.path}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
