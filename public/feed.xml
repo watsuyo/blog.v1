@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+    <rss version="2.0">
+      <channel>
+        <title>watsuyo's blog</title>
+        <link>https://posts.watsuyo.dev/blog</link>
+        <description>This is watsuyo's blog.</description>
+        
+      <item>
+        <title>今日からAIITの3Qがスタート</title>
+        <link>https://posts.watsuyo.dev/blog/2021-10-02/index</link>
+        <pubDate>Fri, 01 Oct 2021 22:00:00 GMT</pubDate>
+        <description>1ヶ月半に及ぶ、学生としての夏休みが終了し、AIIT(産業技術大学院大学)の3Q始まりました。...</description>
+      </item>
+      <item>
+        <title>メモ: テクノロジーは変わるが人間は変わらない</title>
+        <link>https://posts.watsuyo.dev/blog/2021-10-03/index</link>
+        <pubDate>Sat, 02 Oct 2021 22:00:00 GMT</pubDate>
+        <description>ここ最近は、D.A.ノーマンの「誰のためのデザイン」を読み進めています。AIITの2Qで人間中心デザインを受講していて、何度かノーマン...</description>
+      </item>
+      <item>
+        <title>メモ: OSSの歴史を学ぶ</title>
+        <link>https://posts.watsuyo.dev/blog/2021-10-04/index</link>
+        <pubDate>Sun, 03 Oct 2021 22:00:00 GMT</pubDate>
+        <description>AIITの3Qでは、「OSS特論」というOSSの概念、意義、背景、思想、歴史を学ぶ講義があります。講義を通じての到達の目標としては、OSS活動に参加したり、貢献できるくらいの深い理解を目指します。実はOSSが広く知れ渡ったのはここ20年くらいの話...</description>
+      </item>
+      <item>
+        <title>cyber-dojo.orgでTypeScriptで頭の体操とテスト駆動開発の練習をする</title>
+        <link>https://posts.watsuyo.dev/blog/2021-10-05/index</link>
+        <pubDate>Mon, 04 Oct 2021 22:00:00 GMT</pubDate>
+        <description>TypeScriptで頭の体操とテスト駆動開発の練習をするcyber-dojo.orgというサイトをAIITのIT・CIOという授業で知りまして、試しに触ってみました。cyber-dojo.orgは、テスト駆動開発を学ぶサイトでGoやPython...</description>
+      </item>
+      <item>
+        <title>デザイナーとフロントエンドエンジニアで行う週次定例</title>
+        <link>https://posts.watsuyo.dev/blog/2021-10-06/index</link>
+        <pubDate>Tue, 05 Oct 2021 22:00:00 GMT</pubDate>
+        <description>弊社のエンジニアチームには様々な定例が存在します。エンジニアチーム全体の定例や各ポジションの定例など。そんな中、「デザイナー×フロントエンド定例」だけ役職名が2つ並ぶ、珍しい定例があります。...</description>
+      </item>
+      <item>
+        <title>無理をしない。Figma データをファクタした話。</title>
+        <link>https://posts.watsuyo.dev/blog/2022-12-02/index</link>
+        <pubDate>Wed, 30 Nov 2022 23:00:00 GMT</pubDate>
+        <description>今回は、大学院の活動の中で行った Figma のデザインデータのリファクタをした時の話をまとめます。 </description>
+      </item>
+      <item>
+        <title>2021年8~9月のデザインシステム事例をまとめてみた</title>
+        <link>https://posts.watsuyo.dev/blog/design-system-matome-202109/index</link>
+        <pubDate>Sun, 19 Sep 2021 22:00:00 GMT</pubDate>
+        <description>ここ最近、企業におけるデザインシステムの事例を公開したブログや資料をTwitterで多く公開されています。 あまりの多さに、追いきれて...</description>
+      </item>
+      <item>
+        <title>Next.jsとMDXで個人ブログを作ってみた</title>
+        <link>https://posts.watsuyo.dev/blog/nextjs-mdx-1/index</link>
+        <pubDate>Fri, 17 Sep 2021 22:00:00 GMT</pubDate>
+        <description>この記事を読むと誰でも自前の個人ブログを作れるようになることを目指します。(記事のボリュームが想像以上に大きくなったので分割する予定...</description>
+      </item>
+      <item>
+        <title>2021年4月に産業技術大学院大学(AIIT)に入学しました🧑‍🎓</title>
+        <link>https://posts.watsuyo.dev/blog/student-engineer/index</link>
+        <pubDate>Fri, 10 Sep 2021 22:00:00 GMT</pubDate>
+        <description>2021年4月に産業技術大学院大学(以下 AIIT) 情報アーキテクチャコースに入学し、フルタイムのフロントエンドエンジニアとの2足のわらじを履いて...</description>
+      </item>
+      </channel>
+    </rss>

@@ -6,15 +6,14 @@ import Head from 'Head'
 import { PAGE_KEYWORD, DOMAIN } from 'global'
 import { SiHatenabookmark, SiTwitter } from 'react-icons/si'
 import { PostData } from 'type'
-import generateRssFeed from 'rss'
 import BreadCrumbs from 'components/breadcrumbs'
 import Prism from 'prismjs'
 import { useEffect } from 'react'
 
 export const getStaticPaths: GetStaticPaths = () => {
-  generateRssFeed()
+  const allPosts = getAllPosts()
   return {
-    paths: getAllPosts().map((m) => {
+    paths: allPosts.map((m) => {
       return {
         params: {
           title: m.data.path,

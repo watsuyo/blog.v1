@@ -1,7 +1,6 @@
 import { getAllPosts } from 'logic/getAllPosts'
 import Link from 'next/link'
 import { PostData } from 'type'
-import generateRssFeed from 'rss'
 
 type Post = { data: PostData }
 
@@ -36,7 +35,6 @@ const Index = ({ posts }: { posts: Post[] }) => (
 )
 
 export const getStaticProps = () => {
-  generateRssFeed()
   const posts = getAllPosts()
   return {
     props: {

@@ -1,36 +1,39 @@
-const { Domain } = require('domain');
 const fs = require('fs');
-const globby = require('globby');
+const path = require('path');
 
-(async () => {
-  const pages = await globby([
-    'src/pages/**/*.tsx',         // TypeScriptのReactコンポーネントを対象
-    'src/pages/**/*.mdx',         // MDXファイルを対象
-    '!src/pages/_*.tsx',          // _で始まるファイルを除外（Next.jsの特別なページ）
-    '!src/pages/**/[[]*[]].tsx',  // 動的ルートを除外
-    '!src/pages/sitemap.xml.tsx'  // サイトマップ自体を除外
-  ]);
+const SITEMAP_HEADER = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+`;
+const SITEMAP_FOOTER = `</urlset>`;
 
-  const sitemap = `
-    <?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${pages
-        .map(page => {
-          const path = page
+function walk(dir, filelist = []) {
+    const files = fs.readdirSync(dir);
+    files.forEach(file => {
+        if (fs.statSync(path.join(dir, file)).isDirectory()) {
+            filelist = walk(path.join(dir, file), filelist);
+        } else if ((file.endsWith('.tsx') || file.endsWith('.mdx')) && !file.startsWith('_') && !file.includes('[')) {
+            filelist.push(path.join(dir, file));
+        }
+    });
+    return filelist;
+}
+
+const pages = walk('src/pages')
+    .map(page => {
+      const content = fs.readFileSync(page, 'utf-8');
+      if(content.match(/date: '(.*)'/)){
+        const lastmod = content.match(/date: '(.*)'/)[1];
+        const route = page
             .replace('src/pages', '')
             .replace('.tsx', '')
             .replace('.mdx', '')
-            .replace('/index', ''); // index.tsxはルートとして扱う
-          const route = path === '' ? '' : path;
-          return `
-            <url>
-              <loc>${`https://posts.watsuyo.dev/${route}`}</loc>
-            </url>
-          `;
-        })
-        .join('')}
-    </urlset>
-  `;
+            .replace('/index', '')
+            .replace(/^\/+/, '');
+        const url = `https://posts.watsuyo.dev${route === '' ? '/' : route}`;
+        return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
+      }
+    });
 
-  fs.writeFileSync('public/sitemap.xml', sitemap);
-})();
+const sitemap = SITEMAP_HEADER + pages.join('\n') + SITEMAP_FOOTER;
+
+fs.writeFileSync('public/sitemap.xml', sitemap);

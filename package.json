@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node sitemap-generator.js",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint:prettier lint:eslint lint:tsc",
     "lint:prettier": "prettier --check .",
@@ -12,7 +12,7 @@
     "lint:tsc": "tsc",
     "fix": "run-s fix:prettier fix:eslint",
     "fix:prettier": "prettier --write .",
-    "fix:eslint": "eslint . --ext .ts,.tsx --fix"
+    "generate": "node sitemap-generator.js && node generate-rss.js"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
@@ -48,6 +48,8 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.1.0",
+    "rss": "^1.2.2",
+    "sitemap": "^7.1.1",
     "typescript": "^5.3.2"
   },
   "volta": {
