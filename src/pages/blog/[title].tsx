@@ -2,8 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { blogDirPath, getAllPosts } from 'logic/getAllPosts'
-import Head from 'Head'
-import { PAGE_KEYWORD, DOMAIN } from 'global'
+import { DOMAIN } from 'global'
 import { SiHatenabookmark, SiTwitter } from 'react-icons/si'
 import { PostData } from 'type'
 import BreadCrumbs from 'components/breadcrumbs'
@@ -35,12 +34,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export default function Post({
   source,
   mdxSource,
-  dirPath
 }: {
   source: { data: PostData }
   mdxSource: MDXRemoteSerializeResult
-  params?: Pick<PostData, 'title'>
-  dirPath: string
 }) {
   useEffect(() => {
     Prism.highlightAll()
@@ -48,12 +44,6 @@ export default function Post({
 
   return (
     <>
-      <Head
-        title={source.data.title}
-        description={source.data.description}
-        keyword={PAGE_KEYWORD}
-        url={`${DOMAIN}/${dirPath}/${source.data.path}`}
-      />
       <BreadCrumbs
         posts={[
           {
