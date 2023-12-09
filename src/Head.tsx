@@ -1,16 +1,16 @@
 import Head from 'next/head'
 
-import { SITE_NAME, ICON, PAGE_TYPE } from 'global'
+import { SITE_NAME, ICON, PAGE_TYPE, DOMAIN } from 'global'
 
 interface Props {
   title: string
   description: string
   keyword: string
-  url: string
+  url?: string
 }
 
 // eslint-disable-next-line react/display-name
-export default ({ title, description, keyword, url }: Props): JSX.Element => {
+export default ({ title, description, keyword, url = DOMAIN }: Props): JSX.Element => {
   const TITLE = SITE_NAME === title ? SITE_NAME : `${SITE_NAME} | ${title}`
   return (
     <Head>

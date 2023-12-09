@@ -52,7 +52,7 @@ export default function Post({
         title={source.data.title}
         description={source.data.description}
         keyword={PAGE_KEYWORD}
-        url={`${DOMAIN}${dirPath}`}
+        url={`${DOMAIN}/${dirPath}/${source.data.path}`}
       />
       <BreadCrumbs
         posts={[

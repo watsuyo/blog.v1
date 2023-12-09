@@ -37,7 +37,6 @@ export default function App({ Component, pageProps }: MyAppProps) {
           title={SITE_NAME}
           description={PAGE_DESCRIPTION}
           keyword={PAGE_KEYWORD}
-          url={DOMAIN}
         />
         <GoogleAnalytics />
         <Header />
