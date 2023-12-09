@@ -1,8 +1,9 @@
 export type PostData = {
-  title: string
-  description: string
-  path: string
-  date: string
-  author: string
-  img: string
+	id: string | null | undefined
+	title: string
+	description: string
+	path: string
+	date: string
+	author: string
+	img: string
 }
