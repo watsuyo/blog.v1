@@ -26,7 +26,9 @@ export const getAllPosts = () => {
 				.map((fileName) => fs.readFileSync(path.join(dirPath, fileName)))
 		})
 		.map((f) => {
-			return matter(f)
+			// biome-ignore lint/correctness/noUnusedVariables: <explanation>
+			const { orig, ...post } = matter(f)
+			return post
 		}) as unknown as Post[]
 
 	return posts.sort(
