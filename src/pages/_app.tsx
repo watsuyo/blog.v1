@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import React from 'react'
 import Head from 'Head'
-import { SITE_NAME, PAGE_DESCRIPTION, PAGE_KEYWORD, DOMAIN } from 'global'
+import { SITE_NAME, PAGE_DESCRIPTION, PAGE_KEYWORD } from 'global'
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'
 import GoogleAnalytics from 'components/GoogleAnalytics'
