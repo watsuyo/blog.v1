@@ -6,6 +6,11 @@ const SITEMAP_HEADER = `<?xml version="1.0" encoding="UTF-8"?>
 `;
 const SITEMAP_FOOTER = `</urlset>`;
 
+function formatDate(dateString) {
+  const [year, month, day] = dateString.split('/');
+  return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+}
+
 function walk(dir, filelist = []) {
     const files = fs.readdirSync(dir);
     files.forEach(file => {
@@ -21,18 +26,21 @@ function walk(dir, filelist = []) {
 const pages = walk('src/pages')
     .map(page => {
       const content = fs.readFileSync(page, 'utf-8');
-      if(content.match(/date: '(.*)'/)){
-        const lastmod = content.match(/date: '(.*)'/)[1];
-        const route = page
-            .replace('src/pages', '')
+      const dateMatch = content.match(/date: '(.*)'/);
+      if(dateMatch){
+        const lastmod = formatDate(dateMatch[1]);
+        let route = page
+            .replace('src/pages/blog', '') // ここを変更
             .replace('.tsx', '')
             .replace('.mdx', '')
             .replace('/index', '')
             .replace(/^\/+/, '');
-        const url = `https://posts.watsuyo.dev${route === '' ? '/' : route}`;
+        const url = `https://posts.watsuyo.dev/blog/${route}`;
         return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
       }
-    });
+      return null;
+    })
+    .filter(Boolean);
 
 const sitemap = SITEMAP_HEADER + pages.join('\n') + SITEMAP_FOOTER;
 

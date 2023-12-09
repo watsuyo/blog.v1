@@ -15,34 +15,40 @@ function walk(dir, filelist = []) {
   return filelist;
 }
 
-function formatDate(date) {
-  return date.toISOString().split('T')[0];
-}
-
-function generateSitemap() {
+function generateRssFeed() {
   const pages = walk('src/pages/blog');
-
-  let urlsetXml = '';
+  let rssItemsXml = '';
   pages.forEach(page => {
     const content = fs.readFileSync(page, 'utf8');
     const frontMatter = matter(content);
-
-    const loc = `https://posts.watsuyo.dev/blog/${page.replace('src/pages/blog/', '').replace('.mdx', '')}`;
-    const lastmod = formatDate(new Date(frontMatter.data.date));
-
-    urlsetXml += `
-      <url>
-        <loc>${loc}</loc>
-        <lastmod>${lastmod}</lastmod>
-      </url>`;
+    const title = frontMatter.data.title;
+    const pubDate = new Date(frontMatter.data.date).toUTCString();
+    const description = frontMatter.data.description;
+    const urlPath = `https://posts.watsuyo.dev/blog/${page.replace('src/pages/blog/', '').replace('.mdx', '').replace('/index', '')}`;
+    
+    rssItemsXml += `
+      <item>
+        <title>${title}</title>
+        <link>${urlPath}</link>
+        <guid>${urlPath}</guid>
+        <pubDate>${pubDate}</pubDate>
+        <description>${description}</description>
+      </item>`;
   });
 
-  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${urlsetXml}
-    </urlset>`;
+  const feedUrl = 'https://posts.watsuyo.dev/feed.xml';
+  const rssFeedXml = `<?xml version="1.0" ?>
+    <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+      <channel>
+        <title>watsuyo's blog</title>
+        <link>https://posts.watsuyo.dev/blog</link>
+        <atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />
+        <description>This is watsuyo's blog.</description>
+        ${rssItemsXml}
+      </channel>
+    </rss>`;
 
-  fs.writeFileSync('public/sitemap.xml', sitemapXml);
+  fs.writeFileSync('public/feed.xml', rssFeedXml);
 }
 
-generateSitemap();
+generateRssFeed();
