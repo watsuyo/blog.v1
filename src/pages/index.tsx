@@ -11,7 +11,7 @@ const Index = ({ posts }: { posts: Post[] }) => (
 		<div className="mt-4">
 			{posts.map((p) => (
 				<div className="mb-1" key={p.data.path}>
-					<Link href={`/blog/${p.data.path}`} passHref>
+					<Link href={`/posts/${p.data.path}`} passHref>
 						<div className="pb-4">
 							<div className="pb-1">
 								<p className="text-xs text-gray-400" aria-label="Date">

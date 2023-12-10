@@ -35,12 +35,12 @@ const pages = walk('src/pages')
 		if (dateMatch) {
 			const lastmod = formatDate(dateMatch[1])
 			const route = page
-				.replace('src/pages/blog', '') // ここを変更
+				.replace('src/pages/posts', '')
 				.replace('.tsx', '')
 				.replace('.mdx', '')
 				.replace('/index', '')
 				.replace(/^\/+/, '')
-			const url = `https://posts.watsuyo.dev/blog/${route}`
+			const url = `https://watsuyo.dev/posts/${route}`
 			return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`
 		}
 		return null

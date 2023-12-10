@@ -1,7 +1,7 @@
 import MDXComponents from 'components/MDXComponents'
 import BreadCrumbs from 'components/breadcrumbs'
 import { DOMAIN } from 'global'
-import { blogDirPath, getAllPosts } from 'logic/getAllPosts'
+import { getAllPosts, postsDirPath } from 'logic/getAllPosts'
 import { BookmarkCheck, LucideTwitter } from 'lucide-react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
@@ -29,7 +29,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const source = getAllPosts().find((m) => m.data.path === params?.title)
 	const mdxSource = await serialize(source ? source.content : '')
-	return { props: { source, mdxSource, dirPath: blogDirPath } }
+	return { props: { source, mdxSource, dirPath: postsDirPath } }
 }
 
 export default function Post({

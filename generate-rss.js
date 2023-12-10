@@ -17,7 +17,7 @@ function walk(dir, fileList = []) {
 }
 
 function generateRssFeed() {
-	const pages = walk('src/pages/blog')
+	const pages = walk('src/pages/posts')
 	let rssItemsXml = ''
 	for (const page of pages) {
 		const content = fs.readFileSync(page, 'utf8')
@@ -25,8 +25,8 @@ function generateRssFeed() {
 		const title = frontMatter.data.title
 		const pubDate = new Date(frontMatter.data.date).toUTCString()
 		const description = frontMatter.data.description
-		const urlPath = `https://posts.watsuyo.dev/blog/${page
-			.replace('src/pages/blog/', '')
+		const urlPath = `https://watsuyo.dev/posts/${page
+			.replace('src/pages/posts/', '')
 			.replace('.mdx', '')
 			.replace('/index', '')}`
 
@@ -40,14 +40,14 @@ function generateRssFeed() {
 			</item>`
 	}
 
-	const feedUrl = 'https://posts.watsuyo.dev/feed.xml'
+	const feedUrl = 'https://watsuyo.dev/feed.xml'
 	const rssFeedXml = `<?xml version="1.0" ?>
 		<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 			<channel>
-				<title>watsuyo's blog</title>
-				<link>https://posts.watsuyo.dev/blog</link>
+				<title>watsuyo's posts</title>
+				<link>https://watsuyo.dev/posts</link>
 				<atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />
-				<description>This is watsuyo's blog.</description>
+				<description>This is watsuyo's posts.</description>
 				${rssItemsXml}
 			</channel>
 		</rss>`

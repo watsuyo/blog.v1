@@ -4,7 +4,7 @@ import * as path from 'path'
 import matter from 'gray-matter'
 import { PostData } from 'type'
 
-export const blogDirPath = path.join('src', 'pages', 'blog')
+export const postsDirPath = path.join('src', 'pages', 'posts')
 export type Post = {
 	data: PostData
 	content: string
@@ -17,10 +17,10 @@ export type Post = {
 
 export const getAllPosts = () => {
 	const posts = fs
-		.readdirSync(blogDirPath, { withFileTypes: true })
+		.readdirSync(postsDirPath, { withFileTypes: true })
 		.filter((dirEnt) => dirEnt.isDirectory())
 		.flatMap((dirEnt) => {
-			const dirPath = path.join(blogDirPath, dirEnt.name)
+			const dirPath = path.join(postsDirPath, dirEnt.name)
 			return fs
 				.readdirSync(dirPath)
 				.map((fileName) => fs.readFileSync(path.join(dirPath, fileName)))
