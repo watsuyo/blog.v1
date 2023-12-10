@@ -1,6 +1,6 @@
+import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import React, { useEffect, useState } from 'react'
-import { IoMdMoon, IoMdSunny } from 'react-icons/io'
 
 export const ToggleDarkMode = () => {
 	const { theme, setTheme } = useTheme()
@@ -14,11 +14,12 @@ export const ToggleDarkMode = () => {
 			type="button"
 			onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 		>
-			{mounted && (
-				<>
-					{theme === 'dark' ? <IoMdSunny size={28} /> : <IoMdMoon size={28} />}
-				</>
-			)}
+			{mounted &&
+				(theme === 'dark' ? (
+					<Sun size={28} />
+				) : theme === 'light' ? (
+					<Moon size={28} />
+				) : null)}
 		</button>
 	)
 }

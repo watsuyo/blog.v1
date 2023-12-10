@@ -1,5 +1,5 @@
+import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
-import { FaChevronRight } from 'react-icons/fa'
 
 export default function BreadCrumbs({
 	posts,
@@ -27,7 +27,7 @@ export default function BreadCrumbs({
 									{string}
 								</Link>
 							)}
-							<FaChevronRight aria-hidden="true" className="text-xs mx-2" />
+							<ChevronRight aria-hidden="true" className="text-xs mx-2" />
 						</>
 					) : (
 						<span className="text-sm md:text-base" aria-current="page">
