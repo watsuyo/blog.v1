@@ -1,3 +1,4 @@
+import MDXComponents from 'components/MDXComponents'
 import BreadCrumbs from 'components/breadcrumbs'
 import { DOMAIN } from 'global'
 import { blogDirPath, getAllPosts } from 'logic/getAllPosts'
@@ -57,7 +58,11 @@ export default function Post({
 			/>
 			<div className="mt-10">
 				<time>{source.data.date}</time>
-				<MDXRemote {...mdxSource} />
+				{/* @ts-ignore */}
+				<MDXRemote
+					compiledSource={mdxSource.compiledSource}
+					components={MDXComponents}
+				/>
 				{source.data.path && (
 					<div className="mt-6">
 						<a
