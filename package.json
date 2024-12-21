@@ -21,7 +21,7 @@
     "caniuse-lite": "^1.0.30001566",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
-    "next": "14.0.3",
+    "next": "15.1.2",
     "next-mdx-enhanced": "^5.0.0",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.2.1",
