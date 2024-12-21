@@ -1,5 +1,15 @@
-import Documents, { Html, Head, Main, NextScript } from 'next/document'
-export default class extends Documents {
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  type DocumentContext,
+} from "next/document";
+export default class MyDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext) {
+    return Document.getInitialProps(ctx);
+  }
+
   render() {
     return (
       <Html className="dark">
@@ -11,6 +21,6 @@ export default class extends Documents {
           </div>
         </body>
       </Html>
-    )
+    );
   }
 }
